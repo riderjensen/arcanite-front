@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import Home from './components/home/Home';
-import About from './components/home/About';
-import Users from './components/home/Users';
+import Home from './pages/Home';
+import About from './pages/About';
+import Users from './pages/Users';
 import Login from'./components/auth/Login';
 import SignUp from './components/auth/SignUp';
 

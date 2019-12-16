@@ -16,10 +16,10 @@ class NoAuthNavigation extends Component {
                     <li>
                         <NavLink to="/users">Users</NavLink>
                     </li>
-                    <li class="right-align">
+                    <li className="right-align">
                         <NavLink to="/login">Login</NavLink>
                     </li>
-                    <li class="sign-up">
+                    <li className="sign-up">
                         <NavLink to="/signup">Sign Up</NavLink>
                     </li>
                 </ul>

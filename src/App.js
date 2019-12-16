@@ -1,15 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css';
 
-import Navigation from './components/navigation/Navigation';
+import NoAuthNavigation from './components/navigation/NoAuthNavigation';
 
 import Routes from './Routes';
 
 function App() {
   return (
     <Router>
-      <Navigation />
+      <NoAuthNavigation />
       <Routes />
       <div className="App">
       </div>

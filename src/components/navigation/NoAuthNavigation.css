@@ -1,0 +1,33 @@
+ul {
+    display: flex;
+    list-style-type: none;
+}
+ul li {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+ul li.right-align {
+    margin-left: auto;
+    margin-right: 20px;
+
+}
+
+ul li.sign-up a{
+    background-color: lightslategray;
+    color: #fff;
+    padding: 6px 9px;
+    border-radius: 4px;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: green;
+}
+
+ul li a:active {
+    color: red;
+}

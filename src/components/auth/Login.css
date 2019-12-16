@@ -5,7 +5,8 @@ form {
 form input {
     display: block;
     border-radius: 4px;
+    border: 1px solid transparent;
 }
 form input:active {
-    border: lightskyblue;
+    border: 1px solid lightskyblue;
 }

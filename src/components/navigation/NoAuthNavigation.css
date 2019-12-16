@@ -22,6 +22,7 @@ ul li.sign-up a{
 
 ul li a {
     text-decoration: none;
+    color: #000;
 }
 
 ul li a:hover {
@@ -29,5 +30,5 @@ ul li a:hover {
 }
 
 ul li a:active {
-    color: red;
+    color: green;
 }

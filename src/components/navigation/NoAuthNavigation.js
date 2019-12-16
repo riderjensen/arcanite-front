@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './NoAuthNavigation.css';
 
 class NoAuthNavigation extends Component {
@@ -8,13 +8,19 @@ class NoAuthNavigation extends Component {
             <div>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <NavLink to="/">Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/about">About</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/users">Users</NavLink>
                     </li>
                     <li class="right-align">
-                        <Link to="/login">Login</Link>
+                        <NavLink to="/login">Login</NavLink>
                     </li>
                     <li class="sign-up">
-                        <Link to="/signup">Sign Up</Link>
+                        <NavLink to="/signup">Sign Up</NavLink>
                     </li>
                 </ul>
             </div>

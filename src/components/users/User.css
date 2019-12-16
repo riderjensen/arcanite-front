@@ -1,0 +1,33 @@
+.user-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.user-card {
+    text-align: center;
+    background-color: #282c34;
+    width: 300px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.user-card img{
+    margin: auto;
+    border-radius: 50%;
+}
+
+.user-card h3 {
+    margin: 0;
+}
+
+.user-card p {
+    margin: 0;
+}
+
+.user-card a {
+    color: #fff;
+}

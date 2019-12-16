@@ -15,16 +15,19 @@ class Users extends Component {
             this.setState({
                 persons: persons.data.results
             });
+            console.log(this.state.persons)
         })
     }
 
     render() {
         return (
-            <div className="App-header">
-                <p>Users</p>
+            <div>
+                <h1>Users</h1>
+                <div className="user-container">
                 {this.state.persons.map(person => (
-                    <User {...person} />
+                    <User {...person} key={person.login.uuid} />
                 ))}
+                </div>
             </div>
         )
     }

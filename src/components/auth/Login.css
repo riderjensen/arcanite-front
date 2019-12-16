@@ -1,0 +1,11 @@
+form {
+
+}
+
+form input {
+    display: block;
+    border-radius: 4px;
+}
+form input:active {
+    border: lightskyblue;
+}

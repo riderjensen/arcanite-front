@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
+import NoAuthNavigation from '../components/navigation/NoAuthNavigation';
+
 import './Home.css';
+
 
 class Home extends Component {
     render() {
         return (
-            <div className="App-header">
-                <p>
-                    Edit src/App.js and save to reload.
-                </p>
+            <div>
+                <NoAuthNavigation />
+                <div className="App-header">
+                    <p>
+                        Edit src/App.js and save to reload.
+                    </p>
+                </div>
             </div>
         )
     }

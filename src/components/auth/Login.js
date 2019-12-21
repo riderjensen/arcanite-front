@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import NoAuthNavigation from '../navigation/NoAuthNavigation';
 
-import './Login.css';
+import './Auth.css';
 
 class Login extends Component {
     render() {

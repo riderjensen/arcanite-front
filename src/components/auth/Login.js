@@ -15,7 +15,9 @@ class Login extends Component {
                         <input placeholder="Username" type="text" />
                         <input placeholder="Password" type="password" />
                         <input value="Submit" type="submit" />
-                        <NavLink to="/signup">Sign Up</NavLink>
+                        <p>
+                            Don't have an account? <NavLink to="/signup">Sign Up</NavLink>
+                        </p>
                     </form>
                 </div>
             </div>

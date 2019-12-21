@@ -10,14 +10,18 @@ class SignUp extends Component {
         return (
             <div>
                 <NoAuthNavigation />
-                <form>
-                    <input placeholder="Email" type="email" />
-                    <input placeholder="Username" type="text" />
-                    <input placeholder="Password" type="password" />
-                    <input placeholder="Confirm Password" type="password" />
-                    <input value="Submit" type="submit" />
-                </form>
-                <NavLink to="/login">Login</NavLink>
+                <div className="form-center">
+                    <form>
+                        <input placeholder="Email" type="email" />
+                        <input placeholder="Username" type="text" />
+                        <input placeholder="Password" type="password" />
+                        <input placeholder="Confirm Password" type="password" />
+                        <input value="Submit" type="submit" />
+                        <p>
+                            Already have an account? <NavLink to="/login">Login</NavLink>
+                        </p>
+                    </form>
+                </div>
             </div>
 
         )

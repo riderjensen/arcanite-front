@@ -5,11 +5,15 @@ import './NoAuthNavigation.css';
 class NoAuthNavigation extends Component {
     render() {
         return (
-            <div>
-                <ul>
-                    <li>
-                        <NavLink to="/">Home</NavLink>
-                    </li>
+            <nav className="navbar">
+                <label className="navbar-toggle" id="js-navbar-toggle" htmlFor="chkToggle">
+                    <span>&#8213;</span>
+                    <span>&#8213;</span>
+                    <span>&#8213;</span>
+                </label>
+                <NavLink className="logo" to="/">Home</NavLink>
+                <input type="checkbox" id="chkToggle"></input>
+                <ul className="main-nav" id="js-menu">
                     <li>
                         <NavLink to="/about">About</NavLink>
                     </li>
@@ -20,7 +24,7 @@ class NoAuthNavigation extends Component {
                         <NavLink to="/login">Login</NavLink>
                     </li>
                 </ul>
-            </div>
+            </nav>
         )
     }
 }

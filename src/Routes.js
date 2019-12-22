@@ -6,7 +6,7 @@ import About from './pages/About';
 import Users from './pages/Users';
 import Login from'./components/auth/Login';
 import SignUp from './components/auth/SignUp';
-import Dashboard from './containers/dashboard/Dashboard';
+import DashboardContainer from './containers/dashboard-container/DashboardContainer';
 
 class myRouter extends Component {
     render() {
@@ -17,8 +17,7 @@ class myRouter extends Component {
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/users" component={Users} />
-                <Route exact path="/dashboard" component={Dashboard} />
-
+                <Route exact path="/dashboard" component={DashboardContainer} />
             </div>
         )
     }

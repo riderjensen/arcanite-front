@@ -1,0 +1,6 @@
+.dashboard {
+    height: 100vh;
+    width: 100vw - 50px;
+    margin-left: 50px;
+    background-color: lightblue;
+}

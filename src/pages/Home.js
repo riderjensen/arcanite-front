@@ -5,19 +5,17 @@ import NoAuthNavigation from '../components/navigation/NoAuthNavigation';
 import './Home.css';
 
 
-class Home extends Component {
-    render() {
-        return (
-            <div>
-                <NoAuthNavigation />
-                <div className="App-header">
-                    <p>
-                        Edit src/App.js and save to reload.
-                    </p>
-                </div>
+function Home() {
+    return (
+        <div>
+            <NoAuthNavigation />
+            <div className="App-header">
+                <p>
+                    Edit src/App.js and save to reload.
+                </p>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Home;

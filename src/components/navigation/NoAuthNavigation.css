@@ -24,6 +24,7 @@
 .navbar .main-nav li {
     text-align: center;
     margin: 15px auto;
+    padding: 0;
 }
 
 .navbar .main-nav li a {

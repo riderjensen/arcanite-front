@@ -1,4 +1,4 @@
-.App-header {
+.About-header {
     background-color: #282c34;
     min-height: 95vh;
     display: flex;
@@ -8,7 +8,7 @@
     color: white;
   }
 
-  .App-header p {
+  .About-header p {
       max-width: 1200px;
       margin: 30px auto;
   }

@@ -9,10 +9,13 @@ function Home() {
     return (
         <div>
             <NoAuthNavigation />
-            <div className="App-header">
+            <div className="main-header">
                 <p>
                     Edit src/App.js and save to reload.
                 </p>
+            </div>
+            <div className="main-information">
+
             </div>
         </div>
     )

@@ -17,7 +17,6 @@ class Users extends Component {
             this.setState({
                 persons: persons.data.results
             });
-            console.log(this.state.persons)
         })
     }
 

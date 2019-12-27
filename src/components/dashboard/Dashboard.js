@@ -40,7 +40,9 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="dashboard">
-                <InformationCard />
+                {this.state.dashboards.map(dashboard => (
+                    <InformationCard {...dashboard} key={dashboard.name} />
+                ))}
             </div>
         )
     }

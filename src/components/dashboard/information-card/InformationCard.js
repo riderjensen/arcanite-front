@@ -5,20 +5,20 @@ import './InformationCard.css';
 function InformationCard(props) {
     return (
         <div className="InformationCard">
-            <h1>Test</h1>
+            <h1>{props.name}</h1>
             <hr />
             <div className="information">
                 <div className="info-section">
-                    <span>14.3</span> seconds
+                    <span>{new Date(props.lastUpdated).toDateString()}</span> Last Updated
                 </div>
                 <div className="info-section">
-                    <span>734</span> rotations
+                    <span>{props.reboots}</span> Reboots
                 </div>
                 <div className="info-section">
-                    <span>4.3</span> rating
+                    <span>{props.healthRating}</span> Health Rating
                 </div>
             </div>
-            <p>Test information</p>
+            <p>{props.serverInformation}</p>
         </div>
     )
 }

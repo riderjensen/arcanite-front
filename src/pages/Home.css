@@ -14,3 +14,9 @@
     height: 100vh;
     color: #fff;
 }
+
+.secondary-information {
+    background: linear-gradient(#282c34, #fff);
+    height: 100vh;
+    color: #fff;
+}

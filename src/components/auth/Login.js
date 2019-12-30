@@ -12,6 +12,7 @@ class Login extends Component {
                 <NoAuthNavigation />
                 <div className="form-center">
                     <form>
+                        <h1>Login</h1>
                         <input placeholder="Username" type="text" />
                         <input placeholder="Password" type="password" />
                         <input value="Submit" type="submit" />

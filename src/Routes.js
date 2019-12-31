@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,12 +12,15 @@ class myRouter extends Component {
     render() {
         return (
             <div>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/signup" component={SignUp} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/users" component={Users} />
-                <Route exact path="/dashboard" component={DashboardContainer} />
+                {/* <Switch> */}
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/signup" component={SignUp} />
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/users" component={Users} />
+                    <Route exact path="/dashboard" component={DashboardContainer} />
+                    <Route path="/dashboard/:id" component={DashboardContainer} />
+                {/* </Switch> */}
             </div>
         )
     }

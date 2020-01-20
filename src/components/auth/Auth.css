@@ -32,3 +32,12 @@ form p {
     text-align: center;
     font-size: 12px;
 }
+
+form .error-border, form .error-border:active, form .error-border:focus{
+    border-color: red;
+}
+
+form input:focus,
+form button:focus {
+    outline: none;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import { userSignUp } from '../../store/actions/index'; 
+import { connect } from 'react-redux';
 
 import NoAuthNavigation from '../navigation/NoAuthNavigation';
 
@@ -50,16 +51,8 @@ class SignUp extends Component {
 
     signUp(event) {
         event.preventDefault();
+        this.props.userSignUp(this.state)
 
-        if (this.state.passwordMatch) {
-            axios.post('http://localhost:8080/auth/signup', {
-                email: this.state.email,
-                password: this.state.password,
-                username: this.state.username
-            }).then(resp => console.log(resp)).catch(err => console.log(`Err: ${err}`))
-        } else {
-            console.log('Password doesnt match')
-        }
     }
 
     render() {
@@ -83,4 +76,8 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+    userSignUp: userInfo => dispatch(userSignUp(userInfo))
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);

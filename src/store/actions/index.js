@@ -8,7 +8,7 @@ export const userLogin = user => {
             password: user.password,
             username: user.username
         }).then(resp => {
-            localStorage.setItem("token", resp.token)
+            localStorage.setItem("arcaniteToken", resp.token)
             dispatch(loginUserDispatching(resp.user))
         }).catch(err => console.log(`Err: ${err}`))
     }
@@ -26,7 +26,7 @@ export const userSignUp = user => {
             username: user.username,
             email: user.email
         }).then(resp => {
-            localStorage.setItem("token", resp.token)
+            localStorage.setItem("arcaniteToken", resp.token)
             dispatch(signUpUserDispatching(resp.user))
         }).catch(err => console.log(`Err: ${err}`))
     }
@@ -37,6 +37,24 @@ const signUpUserDispatching = userObj => ({
     payload: userObj
 })
 
-export const authCheckState = inc => {
-    return true;
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get('http://localhost:8080/auth/token', { headers: {
+                'Authorization' : `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                if(resp.error) {
+                    localStorage.removeItem('arcaniteToken')
+                } else {
+                    dispatch(loginUserDispatching(resp.user))
+                }
+            }).catch(err => {
+                console.log(`Err: ${err}`)
+            })
+        }
+    }
 }

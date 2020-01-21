@@ -2,16 +2,32 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Routes from './Routes';
+import UnAuthRoutes from './routes/UnAuthRoutes';
+import AuthRoutes from './routes/AuthRoutes';
+
 import './App.css';
 
 import * as actions from './store/actions/index';
 
 class App extends Component {
+  componentDidMount() {
+		this.props.onTryAutoSignIn();
+  }
+  
   render (){
+    let routes = (
+        <AuthRoutes />
+		)
+		if (this.props.isAutheniticated) {
+			routes = (
+          <UnAuthRoutes />
+      )
+		}
+
+
     return (
       <div>
-        <Routes />
+        {routes}
         <div className="App">
         </div>
       </div>
@@ -20,7 +36,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-	return true
+  return {
+	  isAutheniticated: state.token !== null
+	}
 }
 
 const mapDispatchToProps = dispatch => {

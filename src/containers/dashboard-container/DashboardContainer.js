@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Sidebar from '../../components/sidebar/Sidebar';
+import AuthNav from '../../components/navigation/AuthNavigation';
 import Dashboard from '../../components/dashboard/Dashboard';
 
 import './DashboardContainer.css';
@@ -8,7 +8,7 @@ import './DashboardContainer.css';
 function DashboardContainer() {
     return (
         <div className="dashboard-container">
-            <Sidebar />
+            <AuthNav />
             <Dashboard />
         </div>
     )

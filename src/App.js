@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Routes from './Routes';
+import './App.css';
 
 import * as actions from './store/actions/index';
 

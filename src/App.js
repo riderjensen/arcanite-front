@@ -1,8 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import './App.css';
 
 import Routes from './Routes';
+
+import * as actions from './store/actions/index';
 
 function App() {
   return (
@@ -14,4 +18,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		isAutheniticated: state.auth.token !== null
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onTryAutoSignIn: () => dispatch(actions.authCheckState())
+	}
+}
+
+export default connect((mapStateToProps, mapDispatchToProps)(App));

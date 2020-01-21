@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './App.css';
-
 import Routes from './Routes';
 
 import * as actions from './store/actions/index';

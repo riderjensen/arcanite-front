@@ -4,14 +4,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import reducers from './store/reducers/index';
-
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, composeEnhancers, combineReducers, compose } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+import reducers from './store/reducers/index';
+
+const rootReducer = combineReducers({
+    index: reducers,
+    // other reducers as they are created
+})
+
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 const app = (
     <Provider store={store}>

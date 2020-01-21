@@ -14,7 +14,7 @@ function NoAuthNavigation() {
             <input type="checkbox" id="chkToggle"></input>
             <ul className="main-nav">
                 <li className="right-align sign-up">
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
                 </li>
             </ul>
         </nav>

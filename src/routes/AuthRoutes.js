@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import Home from '../pages/Home';
+import Home from '../containers/home/HomeContainer';
 import DashboardContainer from '../containers/dashboard-container/DashboardContainer';
 
 function myAuthRouter() {

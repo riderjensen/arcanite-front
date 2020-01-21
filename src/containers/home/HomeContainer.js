@@ -1,8 +1,8 @@
 import React from 'react';
 
-import NoAuthNavigation from '../components/navigation/NoAuthNavigation';
+import NoAuthNavigation from '../../components/navigation/NoAuthNavigation';
 
-import './Home.css';
+import './HomeContainer.css';
 
 
 function Home() {

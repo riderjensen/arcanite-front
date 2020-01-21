@@ -10,15 +10,9 @@ function NoAuthNavigation() {
                 <span>&#8213;</span>
                 <span>&#8213;</span>
             </label>
-            <NavLink className="logo" to="/">Home</NavLink>
+            <NavLink className="logo" to="/">Project <strong>Arcanite</strong></NavLink>
             <input type="checkbox" id="chkToggle"></input>
             <ul className="main-nav">
-                <li>
-                    <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/users">Users</NavLink>
-                </li>
                 <li className="right-align sign-up">
                     <NavLink to="/login">Login</NavLink>
                 </li>

@@ -1,6 +1,16 @@
 .error-banner {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border-radius: 4px;
+}
+
+.error-banner  p {
+    bottom: 10px;
     text-align: center;
-    color: red;
+    color: #a94442;
+    padding: 10px;
+    margin: 0;
 }

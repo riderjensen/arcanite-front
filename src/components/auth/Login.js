@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import { userLogin } from '../../store/actions/index' 
+import { connect } from 'react-redux';
 
 import NoAuthNavigation from '../navigation/NoAuthNavigation';
 
@@ -29,13 +30,9 @@ class Login extends Component {
 
     login(event) {
         event.preventDefault();
-        axios.post('http://localhost:8080/auth/login', {
-            password: this.state.password,
-            username: this.state.username
-        }).then(resp => console.log(resp)).catch(err => console.log(`Err: ${err}`))
+        this.props.userLogin(this.state)
     }
     
-
 
     render() {
         return (
@@ -57,4 +54,8 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+    userLogin: userInfo => dispatch(userLogin(userInfo))
+})
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -1,21 +1,15 @@
 import * as actionTypes from '../actionTypes';
 
-import { updateObject } from '../../shared/utility';
-
 const initialState = {
-    // items
-};
+	user: {}
+  }
+  
+export default function reducer(state = initialState, action) {
+	switch (action.type) {
+	case actionTypes.LOGIN_USER:
+		return {...state, user: action.payload}
 
-const addIngredient = (state, action) => {
-    // do things
-	// const updatedIngredient = {
-	// 	[action.ingredientName]: state.ingredients[action.ingredientName] + 1
-	// }
-	// const updatedIngredients = updateObject(state.ingredients, updatedIngredient)
-	// const updatedState = {
-	// 	ingredients: updatedIngredients,
-	// 	totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
-	// 	building: true,
-	// }
-	return updateObject(state, updatedState);
+	default:
+		return state;
+	}
 }

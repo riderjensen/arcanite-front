@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
@@ -8,20 +8,20 @@ import Routes from './Routes';
 
 import * as actions from './store/actions/index';
 
-function App() {
-  return (
-    <Router>
-      <Routes />
-      <div className="App">
+class App extends Component {
+  render (){
+    return (
+      <div>
+        <Routes />
+        <div className="App">
+        </div>
       </div>
-    </Router>
-  );
+    )
+  }
 }
 
 const mapStateToProps = state => {
-	return {
-		isAutheniticated: state.auth.token !== null
-	}
+	return true
 }
 
 const mapDispatchToProps = dispatch => {
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default connect((mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

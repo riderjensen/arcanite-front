@@ -1,1 +1,1 @@
-export const MY_ACTION = "MY_ACTION"
+export const LOGIN_USER = "LOGIN_USER"

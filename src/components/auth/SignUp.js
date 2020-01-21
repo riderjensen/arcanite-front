@@ -11,9 +11,9 @@ class SignUp extends Component {
         super(props);
     
         this.handleChange = this.handleChange.bind(this);
-        this.passwordMatchCheck = this.passwordMatchCheck.bind(this);
+        this.passwordComplexityCheck = this.passwordComplexityCheck.bind(this);
         this.signUp = this.signUp.bind(this);
-      }
+    }
 
     state = {
         email: '',
@@ -30,8 +30,8 @@ class SignUp extends Component {
     }
 
 
-    passwordMatchCheck(event) {
-        //see if the two passwords match
+    passwordComplexityCheck(event) {
+        //check to make sure its complex
         this.handleChange(event)
         const paswd=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
         const passMatch = new RegExp(paswd).test(this.state.password);
@@ -50,7 +50,6 @@ class SignUp extends Component {
 
     signUp(event) {
         event.preventDefault();
-        console.log(this.state)
 
         if (this.state.passwordMatch) {
             axios.post('http://localhost:8080/auth/signup', {
@@ -72,7 +71,7 @@ class SignUp extends Component {
                         <h1>Sign Up</h1>
                         <input placeholder="Email" type="email" name="email" onChange={this.handleChange} />
                         <input placeholder="Username" type="text" name="username" onChange={this.handleChange} />
-                        <input placeholder="Password" className={this.state.passwordMatch !== true && this.state.passwordMatch !== null ? 'error-border' : null} type="password" name="password" onChange={this.passwordMatchCheck} />
+                        <input placeholder="Password" className={this.state.passwordMatch !== true && this.state.passwordMatch !== null ? 'error-border' : null} type="password" name="password" onChange={this.passwordComplexityCheck} />
                         <input value="Submit" type="submit" />
                         <p>
                             Already have an account? <NavLink to="/login">Login</NavLink>

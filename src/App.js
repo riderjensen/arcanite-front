@@ -16,12 +16,12 @@ class App extends Component {
   
   render (){
     let routes = (
-        <UnAuthRoutes />
+      <AuthRoutes />
     )
     
 		if (this.props.isAutheniticated) {
 			routes = (
-        <AuthRoutes />
+        <UnAuthRoutes />
       )
 		}
 

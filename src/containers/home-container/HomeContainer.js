@@ -11,7 +11,7 @@ function Home() {
             <NoAuthNavigation />
             <div className="main-header">
                 <p>
-                    Edit src/App.js and save to reload.
+                    Main page for posts to be displayed
                 </p>
             </div>
         </div>

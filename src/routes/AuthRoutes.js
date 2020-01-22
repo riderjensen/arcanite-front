@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Home from '../containers/home-container/HomeContainer';
-import DashboardContainer from '../containers/dashboard-container/DashboardContainer';
+import DashboardContainer from '../containers/profile-container/ProfileContainer';
 
 function myAuthRouter() {
     return (

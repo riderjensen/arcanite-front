@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { userLogout } from '../../store/actions/index';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 class NoAuthNavigation extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     logOutFunction = event => {
         event.preventDefault();
@@ -29,7 +26,7 @@ class NoAuthNavigation extends Component {
                         <NavLink to="/dashboard">Profile</NavLink>
                     </li>
                     <li className="right-align">
-                        <a onClick={this.logOutFunction}>Logout</a>
+                        <button onClick={this.logOutFunction}>Logout</button>
                     </li>
                 </ul>
             </nav>
@@ -37,12 +34,8 @@ class NoAuthNavigation extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.reducer.currentUser
-})
-
 const mapDispatchToProps = dispatch => ({
-    logoutUser: () => dispatch(logoutUser())
+    userLogout: () => dispatch(userLogout())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoAuthNavigation);
+export default connect(null, mapDispatchToProps)(NoAuthNavigation);

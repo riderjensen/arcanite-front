@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import Home from '../containers/home/HomeContainer';
+import Home from '../containers/home-container/HomeContainer';
 
 import Login from '../components/auth/Login';
 import SignUp from '../components/auth/SignUp';

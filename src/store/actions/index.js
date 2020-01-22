@@ -59,7 +59,7 @@ export const authCheckState = () => {
     }
 }
 
-export const logoutUser = () => {
+export const userLogout = () => {
     return dispatch => {
         localStorage.removeItem('arcaniteToken');
         dispatch(logOutUserDispatching())

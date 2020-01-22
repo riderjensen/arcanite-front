@@ -58,3 +58,14 @@ export const authCheckState = () => {
         }
     }
 }
+
+export const logoutUser = () => {
+    return dispatch => {
+        localStorage.removeItem('arcaniteToken');
+        dispatch(logOutUserDispatching())
+    }
+}
+
+const logOutUserDispatching = () => ({
+    type: actionTypes.LOGOUT_USER
+})

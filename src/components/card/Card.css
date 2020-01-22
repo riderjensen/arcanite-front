@@ -3,7 +3,9 @@
     border-radius: .25rem;
     transition: left 0.5s ease-in-out;
     transition: bottom 0.5s ease-in-out;
-
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .card:hover {

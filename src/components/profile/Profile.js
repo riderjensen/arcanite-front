@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Card from '../card/Card';
 import './Profile.css';
 
 
@@ -34,6 +34,9 @@ class Dashboard extends Component {
         return (
             <div className="dashboard">
                 <h1>Profile</h1>
+                {this.state.information.map(card => (
+                    <Card {...card} key={card._id} />
+                ))}
             </div>
         )
     }

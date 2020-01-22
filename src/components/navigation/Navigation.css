@@ -53,6 +53,16 @@
 .navbar #chkToggle {
     display: none;
 }
+
+.navbar button {
+    padding: 0px;
+    background-color: unset;
+    border: unset;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    margin-left: 5px;
+}
   
 #chkToggle:checked + ul.main-nav {
     display: block;

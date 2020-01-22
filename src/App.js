@@ -17,12 +17,11 @@ class App extends Component {
   render (){
     let routes = (
         <UnAuthRoutes />
-
-		)
+    )
+    
 		if (this.props.isAutheniticated) {
 			routes = (
         <AuthRoutes />
-
       )
 		}
 

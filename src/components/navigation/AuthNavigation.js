@@ -8,7 +8,7 @@ class NoAuthNavigation extends Component {
 
     logOutFunction = event => {
         event.preventDefault();
-        this.props.logoutUser();
+        this.props.userLogout();
     }
 
     render() {

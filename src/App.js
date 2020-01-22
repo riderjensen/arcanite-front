@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import GlobalRoutes from './routes/GlobalRoutes';
 import UnAuthRoutes from './routes/UnAuthRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 
@@ -28,6 +29,7 @@ class App extends Component {
 
     return (
       <div>
+        <GlobalRoutes />
         {routes}
         <div className="App">
         </div>

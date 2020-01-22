@@ -14,12 +14,6 @@ function Home() {
                     Edit src/App.js and save to reload.
                 </p>
             </div>
-            <div className="main-information">
-
-            </div>
-            <div className="secondary-information">
-                
-            </div>
         </div>
     )
 }

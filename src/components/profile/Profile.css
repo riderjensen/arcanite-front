@@ -1,6 +1,10 @@
 .dashboard {
-    height: 100vh;
-    width: 100vw - 50px;
-    margin-left: 50px;
-    padding: 20px;
+    z-index: -1;
+    background-color: #fff;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #282c34;
 }

@@ -63,6 +63,10 @@
     cursor: pointer;
     margin-left: 5px;
 }
+
+.navbar button:focus, .navbar button:active {
+    outline: 0;
+}
   
 #chkToggle:checked + ul.main-nav {
     display: block;

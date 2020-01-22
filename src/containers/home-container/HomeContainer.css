@@ -1,22 +1,10 @@
 .main-header {
     z-index: -1;
-    background: linear-gradient(#fff, #282c34);
-    min-height: 95vh;
+    background-color: #fff;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #fff;
-}
-
-.main-information {
-    background-color: #282c34;
-    height: 100vh;
-    color: #fff;
-}
-
-.secondary-information {
-    background: linear-gradient(#282c34, #fff);
-    height: 100vh;
-    color: #fff;
+    color: #282c34;
 }

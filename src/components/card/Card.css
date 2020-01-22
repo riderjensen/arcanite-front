@@ -1,0 +1,27 @@
+.card {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: left 0.5s ease-in-out;
+    transition: bottom 0.5s ease-in-out;
+
+}
+
+.card:hover {
+    left: 1px;
+    bottom: 1px;
+}
+
+.card.staff {
+    padding-bottom: 20px;
+    height: auto;
+}
+
+.card.staff  .card-title {
+    text-align: center;
+    margin: 0;
+}
+
+.card.staff .card-body .title {
+    text-align: center;
+    font-size: 14px;
+}

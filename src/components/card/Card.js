@@ -4,12 +4,11 @@ import './Card.css';
 
 function Card(props) {
     return (
-        <div class="card staff">
-            <div class="card-body">
-                <h5 class="card-title">{props.content}</h5>
-                <p class="title">{props.votes}</p>
-                <p class="card-text">{props.content}</p>
-            </div>
+        <div className="card staff">
+            <h5 className="card-title">{props.content} - <span className="title">{props.votes} votes</span></h5>
+            <p className="view-link">
+                <NavLink  to={'/'+props._id}>View</NavLink>
+            </p>
         </div>
     )
 }

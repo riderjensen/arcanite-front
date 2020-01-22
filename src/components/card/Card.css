@@ -1,19 +1,9 @@
-.card {
+.card.staff {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: .25rem;
-    transition: left 0.5s ease-in-out;
-    transition: bottom 0.5s ease-in-out;
     width: 400px;
     padding: 10px;
     margin-bottom: 10px;
-}
-
-.card:hover {
-    left: 1px;
-    bottom: 1px;
-}
-
-.card.staff {
     padding-bottom: 20px;
     height: auto;
 }
@@ -23,7 +13,10 @@
     margin: 0;
 }
 
-.card.staff .card-body .title {
+.card.staff .title {
+    font-size: 12px;
+}
+
+.card.staff .view-link {
     text-align: center;
-    font-size: 14px;
 }

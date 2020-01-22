@@ -7,7 +7,7 @@ function Card(props) {
         <div className="card staff">
             <h5 className="card-title">{props.content} - <span className="title">{props.votes} votes</span></h5>
             <p className="view-link">
-                <NavLink  to={'/'+props._id}>View</NavLink>
+                <NavLink  to={'/post/'+props._id}>View</NavLink>
             </p>
         </div>
     )

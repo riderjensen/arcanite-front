@@ -7,10 +7,13 @@ export const userLogin = user => {
         return axios.post('http://localhost:8080/auth/login', {
             password: user.password,
             username: user.username
+        }, {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
         }).then(resp => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(loginUserDispatching(resp.data.user))
-        }).catch(err => console.log(`Err: ${err}`))
+        }).catch(error  => console.log(error.response))
     }
 }
   
@@ -25,10 +28,15 @@ export const userSignUp = user => {
             password: user.password,
             username: user.username,
             email: user.email
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
         }).then(resp => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(signUpUserDispatching(resp.data.user))
-        }).catch(err => console.log(`Err: ${err}`))
+        }).catch(error  => console.log(error.response))
     }
 }
   
@@ -44,7 +52,7 @@ export const authCheckState = () => {
             return axios.get('http://localhost:8080/auth/token', { headers: {
                 'Authorization' : `Bearer ${token}`,
                 'Content-Type': 'application/json',
-                Accept: 'application/json',
+                'Accept': 'application/json',
             }}).then(resp => {
                 console.log(resp)
                 if(resp.error) {
@@ -52,10 +60,8 @@ export const authCheckState = () => {
                 } else {
                     dispatch(loginUserDispatching(resp.user))
                 }
-            }).catch(err => {
-                console.log(`Err: ${err}`)
-            })
-        }
+            }).catch(error  => console.log(error.response)
+        )}
     }
 }
 

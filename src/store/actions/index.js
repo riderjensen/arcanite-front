@@ -8,8 +8,8 @@ export const userLogin = user => {
             password: user.password,
             username: user.username
         }).then(resp => {
-            localStorage.setItem("arcaniteToken", resp.token)
-            dispatch(loginUserDispatching(resp.user))
+            localStorage.setItem("arcaniteToken", resp.data.token)
+            dispatch(loginUserDispatching(resp.data.user))
         }).catch(err => console.log(`Err: ${err}`))
     }
 }
@@ -26,8 +26,8 @@ export const userSignUp = user => {
             username: user.username,
             email: user.email
         }).then(resp => {
-            localStorage.setItem("arcaniteToken", resp.token)
-            dispatch(signUpUserDispatching(resp.user))
+            localStorage.setItem("arcaniteToken", resp.data.token)
+            dispatch(signUpUserDispatching(resp.data.user))
         }).catch(err => console.log(`Err: ${err}`))
     }
 }

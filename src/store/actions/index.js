@@ -52,7 +52,7 @@ export const authCheckState = () => {
         const token = localStorage.arcaniteToken;
         if (token) {
             return axios.get('http://localhost:8080/auth/token', { headers: {
-                'Authorization' : `Bearer ${token}`,
+                'Authorization' : `${token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             }}).then(resp => {

@@ -5,7 +5,7 @@ import './Profile.css';
 
 class Dashboard extends Component {
     state = {
-        information:[
+        information: [
             {
                 type: "post",
                 content: "My post title",

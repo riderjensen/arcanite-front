@@ -13,6 +13,7 @@ export const userLogin = user => {
         }).then(resp => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(loginUserDispatching(resp.data.user))
+            // login them in and direct to dashboard
         }).catch(error  => console.log(error.response))
     }
 }
@@ -36,6 +37,7 @@ export const userSignUp = user => {
         }).then(resp => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(signUpUserDispatching(resp.data.user))
+            // login them in and direct to dashboard
         }).catch(error  => console.log(error.response))
     }
 }

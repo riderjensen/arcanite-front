@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { userSignUp } from '../../store/actions/index'; 
 import { connect } from 'react-redux';
 
-import NoAuthNavigation from '../navigation/NoAuthNavigation';
-
 import './Auth.css';
 
 class SignUp extends Component {
@@ -58,7 +56,6 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-                <NoAuthNavigation />
                 <div className="form-center">
                     <form onSubmit={this.signUp}>
                         <h1>Sign Up</h1>

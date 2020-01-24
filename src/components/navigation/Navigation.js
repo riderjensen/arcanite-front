@@ -28,6 +28,12 @@ class NoAuthNavigation extends Component {
                     <li className="right-align">
                         <button onClick={this.logOutFunction}>Logout</button>
                     </li>
+                    <li className="right-align">
+                        <NavLink to="/about">About</NavLink>
+                    </li>
+                    <li className="right-align">
+                        <NavLink to="/login">Login</NavLink>
+                    </li>
                 </ul>
             </nav>
         )

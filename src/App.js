@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import UnAuthRoutes from './routes/UnAuthRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 
+import Navigation from './components/navigation/Navigation';
+
 import './App.css';
 
 import * as actions from './store/actions/index';
@@ -28,6 +30,7 @@ class App extends Component {
 
     return (
       <div>
+        <Navigation />
         {routes}
         <div className="App">
         </div>

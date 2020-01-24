@@ -56,11 +56,10 @@ export const authCheckState = () => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             }}).then(resp => {
-                console.log(resp)
                 if(resp.error) {
                     localStorage.removeItem('arcaniteToken')
                 } else {
-                    dispatch(loginUserDispatching(resp.user))
+                    dispatch(loginUserDispatching(resp.data.username))
                 }
             }).catch(error  => console.log(error.response)
         )}

@@ -13,8 +13,6 @@ export default function reducer(state = initialState, action) {
 			return {...state, username: null}
 		case actionTypes.SIGN_UP_USER:
 			return {...state, username: action.payload}
-		case actionTypes.MODAL_SHOW:
-			return {...state, modal: action.payload}
 		default:
 			return state;
 	}

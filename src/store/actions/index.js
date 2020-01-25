@@ -76,25 +76,3 @@ export const userLogout = () => {
 const logOutUserDispatching = () => ({
     type: actionTypes.LOGOUT_USER
 })
-
-export const showModal = () => {
-    return dispatch => {
-        dispatch(showModalDispatching())
-    }
-}
-
-const showModalDispatching = () => ({
-    type: actionTypes.MODAL_SHOW,
-    payload: true
-})
-
-export const hideModal = () => {
-    return dispatch => {
-        dispatch(hideModalDispatching())
-    }
-}
-
-const hideModalDispatching = () => ({
-    type: actionTypes.MODAL_HIDE,
-    payload: false
-})

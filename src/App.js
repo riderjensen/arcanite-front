@@ -13,21 +13,24 @@ import * as actions from './store/actions/index';
 
 class App extends Component {
   state = {
-    username: this.props.username
+    username: null
   }
 
   componentDidMount() {
-		this.props.onTryAutoSignIn();
+    this.props.onTryAutoSignIn();
+    this.setState({
+      username: this.props.username
+    })
   }
   
   render (){
     let routes = (
-      <UnAuthRoutes />
+      <AuthRoutes />
     )
     
 		if (this.state.username) {
 			routes = (
-        <AuthRoutes />
+        <UnAuthRoutes />
       )
 		}
 
@@ -44,6 +47,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.index.username)
   return {
 	  username: state.index.username
 	}

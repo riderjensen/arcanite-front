@@ -18,12 +18,12 @@ class App extends Component {
   
   render (){
     let routes = (
-      <AuthRoutes />
+      <UnAuthRoutes />
     )
     
-		if (this.props.isAutheniticated) {
+		if (this.props.username) {
 			routes = (
-        <UnAuthRoutes />
+        <AuthRoutes />
       )
 		}
 
@@ -41,7 +41,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-	  isAutheniticated: state.token !== null
+	  username: state.index.username
 	}
 }
 

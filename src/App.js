@@ -12,6 +12,10 @@ import './App.css';
 import * as actions from './store/actions/index';
 
 class App extends Component {
+  state = {
+    username: this.props.username
+  }
+
   componentDidMount() {
 		this.props.onTryAutoSignIn();
   }
@@ -21,7 +25,7 @@ class App extends Component {
       <UnAuthRoutes />
     )
     
-		if (this.props.username) {
+		if (this.state.username) {
 			routes = (
         <AuthRoutes />
       )

@@ -7,6 +7,27 @@ import * as actions from '../../store/actions/index';
 
 
 class Modal extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    state = {
+        content: ''
+    }
+
+    handleChange(event) {
+        // change the inputs in the state
+        const myStateObj = {};
+        myStateObj[event.target.name] = event.target.value;
+        this.setState(myStateObj)
+    }
+
+    submitPost = event => {
+        event.preventDefault();
+        this.props.submitPost(this.state.content);
+    }
 
     render() {
         return (
@@ -14,8 +35,8 @@ class Modal extends Component {
                 <div onClick={this.props.passFunction} className="overlay"></div>
                 <div onClick={this.preventIssue} className="modal">
                     <h1>Create Post</h1>
-                    <input type="text" />
-                    <button>Submit</button>
+                    <input type="text" name="content" onChange={this.handleChange} />
+                    <button onClick={this.submitPost}>Submit</button>
                 </div>
             </div>
         )
@@ -23,16 +44,12 @@ class Modal extends Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        username: state.index.username
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
-        userLogout: () => dispatch(actions.userLogout())
+        submitPost: content => {
+            dispatch(actions.submitPost({content}))
+        }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(null, mapDispatchToProps)(Modal);

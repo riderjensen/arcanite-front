@@ -2,15 +2,35 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import Modal from '../modal/Modal';
+
 import './Navigation.css';
 
 import * as actions from '../../store/actions/index';
 
 class NoAuthNavigation extends Component {
 
+    state = {
+        modal: false
+    }
+
     logOutFunction = event => {
         event.preventDefault();
         this.props.userLogout();
+    }
+
+    showModal = event => {
+        event.preventDefault();
+        this.setState({
+            modal: true
+        })
+    }
+
+    hideModal = event => {
+        event.preventDefault();
+        this.setState({
+            modal: false
+        })
     }
 
     AuthRoutes() {
@@ -33,7 +53,10 @@ class NoAuthNavigation extends Component {
                     <NavLink to="/dashboard">Profile</NavLink>
                 </li>
                 <li className="right-align">
-                    <button onClick={this.logOutFunction}>Logout</button>
+                    <button className="clear" onClick={this.logOutFunction}>Logout</button>
+                </li>
+                <li className="right-align">
+                    <button className="emphasis" onClick={this.showModal}>Create Post</button>
                 </li>
             </ul>
         )
@@ -50,6 +73,7 @@ class NoAuthNavigation extends Component {
                 <NavLink className="logo" to="/">Project <strong>Arcanite</strong></NavLink>
                 <input type="checkbox" id="chkToggle"></input>
                 {this.props.username ? this.UnAuthRoutes() : this.AuthRoutes()}
+                {this.state.modal ? <Modal passFunction={this.hideModal} /> : null}
             </nav>
         )
     }

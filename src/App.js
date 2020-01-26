@@ -25,15 +25,14 @@ class App extends Component {
   
   render (){
     let routes = (
-      <AuthRoutes />
+      <UnAuthRoutes />
     )
     
 		if (this.state.username) {
 			routes = (
-        <UnAuthRoutes />
+        <AuthRoutes />
       )
 		}
-
 
     return (
       <div>

@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+
 import Card from '../../components/card/Card';
+
+import * as actions from '../../store/actions/index';
 
 import './HomeContainer.css';
 
 
 class Home extends Component {
 
-    state = {
-        posts: []
-    }
-
     componentDidMount() {
-        // check the state for posts first then call if there are none
-        axios.get('http://localhost:8080/a').then(resp => {
-            this.setState({ posts: resp.data });
-        }).catch(err => console.log(err))
+        if (this.props.posts.length < 1) {
+            this.props.getPosts()
+        }
     }
 
     render() {
         return (
             <div>
                 <div className="main-header">
-                    {this.state.posts.map(post => (
+                    {this.props.posts.map(post => (
                         <Card {...post} key={post._id} />
                     ))}
                 </div>
@@ -31,4 +29,14 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        posts: state.index.posts
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    getPosts: () => dispatch(actions.getPosts())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

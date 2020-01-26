@@ -28,7 +28,7 @@ class App extends Component {
       <UnAuthRoutes />
     )
     
-		if (this.state.username) {
+		if (this.props.username) {
 			routes = (
         <AuthRoutes />
       )

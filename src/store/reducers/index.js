@@ -13,6 +13,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, username: null}
 		case actionTypes.SIGN_UP_USER:
 			return {...state, username: action.payload}
+		case actionTypes.SUBMIT_POST:
+			return {...state, username: action.payload}
 		default:
 			return state;
 	}

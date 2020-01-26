@@ -76,3 +76,25 @@ export const userLogout = () => {
 const logOutUserDispatching = () => ({
     type: actionTypes.LOGOUT_USER
 })
+
+export const submitPost = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.post('http://localhost:8080/p', {
+                "content": payload.content
+            }, { headers: {
+                'Authorization' : `${token}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                dispatch(submitPostDispatching(resp.data.username))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}
+
+const submitPostDispatching = () => ({
+    type: actionTypes.SUBMIT_POST
+})

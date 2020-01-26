@@ -3,7 +3,8 @@ import * as actionTypes from '../actionTypes';
 const initialState = {
 	username: null,
 	modal: false,
-	posts: []
+	posts: [],
+	userPosts: []
   }
   
 export default function reducer(state = initialState, action) {
@@ -18,6 +19,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, username: action.payload}
 		case actionTypes.GET_POSTS:
 			return {...state, posts: action.payload}
+		case actionTypes.GET_USER_POSTS:
+			return {...state, userPosts: action.payload}
 		default:
 			return state;
 	}

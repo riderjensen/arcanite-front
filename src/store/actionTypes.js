@@ -4,3 +4,4 @@ export const LOGOUT_USER = "LOGOUT_USER"
 
 export const SUBMIT_POST = "SUBMIT_POST"
 export const GET_POSTS = "GET_POSTS"
+export const GET_USER_POSTS = "GET_USER_POSTS"

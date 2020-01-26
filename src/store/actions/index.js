@@ -88,7 +88,6 @@ export const submitPost = payload => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             }}).then(resp => {
-                console.log(resp)
                 dispatch(submitPostDispatching(resp.data.username))
             }).catch(error  => console.log(error.response)
         )}
@@ -112,5 +111,24 @@ export const getPosts = () => {
 
 const getPostsDispatching = posts => ({
     type: actionTypes.GET_POSTS,
+    payload: posts
+})
+
+export const getUserPostsAndComments = () => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get('http://localhost:8080/p/all', { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                dispatch(getUserPostsAndCommentsDispatching(resp.data.posts))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}
+
+const getUserPostsAndCommentsDispatching = posts => ({
+    type: actionTypes.GET_USER_POSTS,
     payload: posts
 })

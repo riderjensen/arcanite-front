@@ -13,10 +13,19 @@
 }
 
 .overlay .modal {
+    position: relative;
     width: 60vw;
     height: auto;
     background-color: #fff;
     z-index: 5;
+}
+
+.overlay .modal .close{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-size: 22px;
+    cursor: pointer;
 }
 
 .overlay .modal input {

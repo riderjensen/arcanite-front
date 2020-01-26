@@ -1,7 +1,7 @@
 .card.staff {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: .25rem;
-    width: 400px;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     padding-bottom: 20px;
@@ -19,4 +19,10 @@
 
 .card.staff .view-link {
     text-align: center;
+}
+ 
+@media screen and (min-width: 768px) {
+    .card.staff {
+        width: 400px;
+    }
 }

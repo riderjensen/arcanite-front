@@ -21,7 +21,7 @@ class Home extends Component {
             <div>
                 <div className="main-header">
                     {this.props.posts.map(post => (
-                        <Card {...post} key={post._id} />
+                        <Card {...post} loggedInUser={this.props.username} key={post._id} />
                     ))}
                 </div>
             </div>
@@ -31,7 +31,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.index.posts
+        posts: state.index.posts,
+        username: state.index.username
     }
 }
 

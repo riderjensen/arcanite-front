@@ -9,6 +9,11 @@ import './Profile.css';
 
 class Profile extends Component {
 
+    logOutFunction = event => {
+        event.preventDefault();
+        this.props.userLogout();
+    }
+
     componentDidMount() {
         this.props.getUserPostsAndComments()
     }
@@ -17,6 +22,7 @@ class Profile extends Component {
         return (
             <div className="dashboard">
                 <h1>Profile</h1>
+                <button onClick={this.logOutFunction}>Logout</button>
                 {this.props.userPosts.length > 0 ? this.props.userPosts.map(card => (
                     <Card {...card} loggedInUser={this.props.username} key={card._id} />
                 )) : null}
@@ -33,7 +39,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    getUserPostsAndComments: () => dispatch(actions.getUserPostsAndComments())
+    getUserPostsAndComments: () => dispatch(actions.getUserPostsAndComments()),
+    userLogout: () => dispatch(actions.userLogout())
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

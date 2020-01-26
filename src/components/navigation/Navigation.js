@@ -6,17 +6,10 @@ import Modal from '../modal/Modal';
 
 import './Navigation.css';
 
-import * as actions from '../../store/actions/index';
-
 class NoAuthNavigation extends Component {
 
     state = {
         modal: false
-    }
-
-    logOutFunction = event => {
-        event.preventDefault();
-        this.props.userLogout();
     }
 
     showModal = event => {
@@ -53,9 +46,6 @@ class NoAuthNavigation extends Component {
                     <NavLink to="/profile">{this.props.username.toUpperCase()}</NavLink>
                 </li>
                 <li className="right-align">
-                    <button className="clear" onClick={this.logOutFunction}>Logout</button>
-                </li>
-                <li className="right-align">
                     <button className="emphasis" onClick={this.showModal}>Create Post</button>
                 </li>
             </ul>
@@ -85,10 +75,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        userLogout: () => dispatch(actions.userLogout())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NoAuthNavigation);
+export default connect(mapStateToProps, null)(NoAuthNavigation);

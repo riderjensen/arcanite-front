@@ -98,3 +98,19 @@ export const submitPost = payload => {
 const submitPostDispatching = () => ({
     type: actionTypes.SUBMIT_POST
 })
+
+export const getPosts = () => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get('http://localhost:8080/a').then(resp => {
+                dispatch(getPostsDispatching(resp.data))
+            }).catch(err => console.log(err))
+        }
+    }
+}
+
+const getPostsDispatching = posts => ({
+    type: actionTypes.GET_POSTS,
+    payload: posts
+})

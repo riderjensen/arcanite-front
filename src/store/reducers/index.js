@@ -2,7 +2,8 @@ import * as actionTypes from '../actionTypes';
 
 const initialState = {
 	username: null,
-	modal: false
+	modal: false,
+	posts: []
   }
   
 export default function reducer(state = initialState, action) {
@@ -15,6 +16,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, username: action.payload}
 		case actionTypes.SUBMIT_POST:
 			return {...state, username: action.payload}
+		case actionTypes.GET_POSTS:
+			return {...state, posts: action.payload}
 		default:
 			return state;
 	}

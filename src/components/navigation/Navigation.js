@@ -50,7 +50,7 @@ class NoAuthNavigation extends Component {
         return (
             <ul className="main-nav">
                 <li className="right-align">
-                    <NavLink to="/dashboard">Profile</NavLink>
+                    <NavLink to="/profile">{this.props.username}</NavLink>
                 </li>
                 <li className="right-align">
                     <button className="clear" onClick={this.logOutFunction}>Logout</button>

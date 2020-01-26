@@ -41,7 +41,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     getUserPostsAndComments: () => dispatch(actions.getUserPostsAndComments()),
     userLogout: () => dispatch(actions.userLogout())
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

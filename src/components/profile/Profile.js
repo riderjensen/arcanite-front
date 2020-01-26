@@ -1,45 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Card from '../card/Card';
+
+import * as actions from '../../store/actions/index';
+
 import './Profile.css';
 
 
-class Dashboard extends Component {
-    state = {
-        information: [
-            {
-                type: "post",
-                content: "My post title",
-                votes: 34,
-                edited: false,
-                _id: 1234
-            },
-            {
-                type: "post",
-                content: "My second post title",
-                votes: 53,
-                edited: true,
-                _id: 12345
-            },
-            {
-                type: "comment",
-                content: "My first comment",
-                votes: 11,
-                edited: true,
-                _id: 123456
-            }
-        ]
+class Profile extends Component {
+
+    componentDidMount() {
+        this.props.getUserPostsAndComments()
     }
 
     render() {
         return (
             <div className="dashboard">
                 <h1>Profile</h1>
-                {this.state.information.map(card => (
-                    <Card {...card} key={card._id} />
-                ))}
+                {this.props.userPosts.length > 0 ? this.props.userPosts.map(card => (
+                    <Card {...card} loggedInUser={this.props.username} key={card._id} />
+                )) : null}
             </div>
         )
     }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+    return {
+        userPosts: state.index.userPosts,
+        username: state.index.username
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    getUserPostsAndComments: () => dispatch(actions.getUserPostsAndComments())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

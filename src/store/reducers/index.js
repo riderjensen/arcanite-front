@@ -4,7 +4,8 @@ const initialState = {
 	username: null,
 	modal: false,
 	posts: [],
-	userPosts: []
+	userPosts: [],
+	selectedPost: {}
   }
   
 export default function reducer(state = initialState, action) {
@@ -21,6 +22,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, posts: action.payload}
 		case actionTypes.GET_USER_POSTS:
 			return {...state, userPosts: action.payload}
+		case actionTypes.GET_ONE_POST:
+			return {...state, selectedPost: action.payload}
 		default:
 			return state;
 	}

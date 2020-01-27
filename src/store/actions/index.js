@@ -164,8 +164,21 @@ export const votePost = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 console.log(resp)
-                // dispatch(editPostDispatching(resp.data.posts))
+                // dispatch(votePostDispatching(resp.data.posts))
             }).catch(error  => console.log(error.response)
         )}
     }
 }
+
+export const getOnePost = payload => {
+    return dispatch => {
+        return axios.get(`http://localhost:8080/a/${payload}`).then(resp => {
+            dispatch(getOnePostDispatching(resp.data.post))
+        }).catch(error  => console.log(error.response))
+    }
+}
+
+const getOnePostDispatching = payload => ({
+    type: actionTypes.GET_ONE_POST,
+    payload: payload
+})

@@ -23,12 +23,12 @@ class Post extends Component {
         this.props.getOnePost(id);
     }
 
-    // addComment = event => {
-    //     event.preventDefault();
-    //     this.props.addComment({
-    //         id: this.props._id
-    //     });
-    // }
+    addComment = event => {
+        event.preventDefault();
+        this.props.addComment({
+            id: this.props._id
+        });
+    }
 
     render () {
         return (
@@ -38,8 +38,7 @@ class Post extends Component {
                     <p>Posted By: {this.props.post.user}</p>
                     <p>Created At: {this.props.post.createdAt}</p>
                     <p>Edited: {this.props.post.edited}</p>
-                    {console.log(this.props.post)}
-                    {/* <button onClick={addComment}>Comment</button> */}
+                    {this.props.username ? <button onClick={this.addComment}>Comment</button> : null}
                 </div>
                 <div className="post-comments">
                 {this.props.post ? this.props.post.comments ? this.props.post.comments.length > 0 ? this.props.post.comments.map(comment => {
@@ -54,6 +53,7 @@ class Post extends Component {
 const mapStateToProps = state => {
     return {
         post: state.index.selectedPost,
+        username: state.index.username
     }
 }
 

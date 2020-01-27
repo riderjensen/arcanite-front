@@ -19,7 +19,8 @@ class Card extends Component {
     state = {
         editing: false,
         postContent: this.props.content,
-        votes: this.props.votes
+        votes: this.props.votes,
+        username: this.props.username
     }
 
     toggleEditing = _ => {
@@ -59,30 +60,40 @@ class Card extends Component {
     }
 
     render() {
+
+        let cardContent;
+
+        if (!this.state.editing && this.props.user === this.props.loggedInUser) {
+            cardContent = <div>
+                <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                <span className="votes">{this.state.votes} votes</span>
+                <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+            </div>
+        } else if (!this.state.editing && this.props.user !== this.props.loggedInUser) {
+            cardContent = <div>
+                <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
+                <span className="votes">{this.state.votes} votes</span>
+                <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+            </div>
+        } else {
+            cardContent = <div className="edit">
+                <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
+                <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
+                <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+            </div> 
+        }
+
         return (
-        <div className="card staff">
-            {!this.state.editing ? 
-                this.props.user === this.props.loggedInUser ? 
-                    <div>
-                        <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
-                        <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-                    </div>
-                        :
-                    <div>
-                        <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
-                        <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-                    </div>
-                    : 
-                    <div className="edit">
-                        <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
-                        <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
-                        <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
-                    </div> 
-                }
-        </div>
+            <div className="card staff">
+                {cardContent}
+            </div>
         )
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        username: state.index.username
     }
 }
 
@@ -91,4 +102,4 @@ const mapDispatchToProps = dispatch => ({
     votePost: id => dispatch(actions.votePost(id))
 })
 
-export default connect(null, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

@@ -1,23 +1,83 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+
 import './Card.css';
 
+import * as actions from '../../store/actions/index';
+
 class Card extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    state = {
+        editing: false,
+        postContent: this.props.content
+    }
+
+    toggleEditing = _ => {
+        this.setState({
+            editing: !this.state.editing
+        })
+    }
+
+    handleChange(event) {
+        // change the inputs in the state
+        const myStateObj = {};
+        myStateObj[event.target.name] = event.target.value;
+        this.setState(myStateObj)
+    }
+
+    editPost = event => {
+        event.preventDefault();
+        this.setState({
+            editing: false
+        })
+        this.props.editPost({
+            content: this.state.postContent,
+            id: this.props._id
+        });
+    }
 
     render() {
         return (
         <div className="card staff">
-            <h5 className="card-title">{this.props.content} - <span className="title">{this.props.votes} votes</span></h5>
-            <p className="view-link">
-                <NavLink  to={'/post/'+this.props._id}>View</NavLink>
-            </p>
-            {this.props.user === this.props.loggedInUser ? <p className="view-link">
-                Edit
-            </p> : null}
-
+            {!this.state.editing ? 
+                this.props.user === this.props.loggedInUser ? 
+                    <div>
+                        <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.props.votes} votes</span></h5>
+                        <p className="view-link">
+                            <NavLink  to={'/post/'+this.props._id}>View</NavLink>
+                        </p>
+                    </div>
+                        :
+                    <div>
+                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.props.votes} votes</span></h5>
+                        <p className="view-link">
+                            <NavLink  to={'/post/'+this.props._id}>View</NavLink>
+                        </p>
+                    </div>
+                    : 
+                    <div>
+                        <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
+                            <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
+                            <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                    </div> 
+                }
         </div>
         )
     }
 }
 
-export default Card;
+const mapDispatchToProps = dispatch => ({
+    editPost: editObj => dispatch(actions.editPost(editObj)),
+})
+
+export default connect(null, mapDispatchToProps)(Card);

@@ -132,3 +132,24 @@ const getUserPostsAndCommentsDispatching = posts => ({
     type: actionTypes.GET_USER_POSTS,
     payload: posts
 })
+
+export const editPost = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.patch(`http://localhost:8080/p/${payload.id}`, {
+                "content": payload.content
+            }, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                dispatch(editPostDispatching(resp.data.posts))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}
+
+const editPostDispatching = payload => ({
+    type: actionTypes.EDIT_POST,
+    payload: payload
+})

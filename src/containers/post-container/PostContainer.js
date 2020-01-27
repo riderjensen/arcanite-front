@@ -12,7 +12,8 @@ class Post extends Component {
 
     state = {
         id: this.props.location.pathname.split('/')[2],
-        comments: []
+        comments: [],
+        commentContent: ''
     }
 
     componentDidMount() {
@@ -23,10 +24,18 @@ class Post extends Component {
         this.props.getOnePost(id);
     }
 
+    handleChange = event => {
+        // change the inputs in the state
+        const myStateObj = {};
+        myStateObj[event.target.name] = event.target.value;
+        this.setState(myStateObj);
+    }
+
     addComment = event => {
         event.preventDefault();
         this.props.addComment({
-            id: this.props._id
+            id: this.state.id,
+            content: this.state.commentContent
         });
     }
 
@@ -38,7 +47,11 @@ class Post extends Component {
                     <p>Posted By: {this.props.post.user}</p>
                     <p>Created At: {this.props.post.createdAt}</p>
                     <p>Edited: {this.props.post.edited}</p>
-                    {this.props.username ? <button onClick={this.addComment}>Comment</button> : null}
+                    {this.props.username ? 
+                        <div>
+                            <input type="text" name="commentContent" onChange={this.handleChange} />
+                            <button onClick={this.addComment}>Comment</button>
+                        </div> : null}
                 </div>
                 <div className="post-comments">
                 {this.props.post ? this.props.post.comments ? this.props.post.comments.length > 0 ? this.props.post.comments.map(comment => {
@@ -59,7 +72,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     getOnePost: id => dispatch(actions.getOnePost(id)),
-    addComment: editObj => dispatch(actions.addComment(editObj)),
+    addComment: commentObj => dispatch(actions.addComment(commentObj)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

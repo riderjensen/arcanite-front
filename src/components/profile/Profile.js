@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from '../card/Card';
+import PostCard from '../card/PostCard';
 
 import * as actions from '../../store/actions/index';
 
@@ -24,7 +24,7 @@ class Profile extends Component {
                 <h1>Profile</h1>
                 <button onClick={this.logOutFunction}>Logout</button>
                 {this.props.userPosts.length > 0 ? this.props.userPosts.map(card => (
-                    <Card {...card} loggedInUser={this.props.username} key={card._id} />
+                    <PostCard {...card} loggedInUser={this.props.username} key={card._id} />
                 )) : null}
             </div>
         )

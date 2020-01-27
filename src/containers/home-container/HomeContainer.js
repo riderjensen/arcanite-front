@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Card from '../../components/card/Card';
+import PostCard from '../../components/card/PostCard';
 
 import * as actions from '../../store/actions/index';
 
@@ -21,7 +21,7 @@ class Home extends Component {
             <div>
                 <div className="main-header">
                     {this.props.posts.map(post => (
-                        <Card {...post} loggedInUser={this.props.username} key={post._id} />
+                        <PostCard {...post} loggedInUser={this.props.username} key={post._id} />
                     ))}
                 </div>
             </div>

@@ -27,6 +27,7 @@ class Card extends Component {
         this.setState({
             editing: !this.state.editing
         })
+        console.log(!this.state.editing)
     }
 
     handleChange(event) {
@@ -60,32 +61,38 @@ class Card extends Component {
     }
 
     render() {
-
         let cardContent;
-
-        if (!this.state.editing && this.props.user === this.props.loggedInUser) {
-            cardContent = <div>
-                <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
-                <span className="votes">{this.state.votes} votes</span>
-                <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-            </div>
-        } else if (!this.state.editing && this.props.user !== this.props.loggedInUser) {
-            cardContent = <div>
-                <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
-                <span className="votes">{this.state.votes} votes</span>
-                <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-            </div>
-        } else {
-            cardContent = <div className="edit">
-                <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
-                <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
-                <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
-            </div> 
-        }
 
         return (
             <div className="card staff">
                 {cardContent}
+                {this.state.editing   
+                ? 
+                <div className="edit">
+                    <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
+                    <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
+                    <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                </div> 
+                : this.props.user === this.props.loggedInUser && this.state.username 
+                    ? 
+                    <div>
+                        <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                        <span className="votes">{this.state.votes} votes</span>
+                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                    </div>
+
+                    : this.state.username && this.props.user !== this.props.loggedInUser
+                    ? 
+                    <div>
+                        <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
+                        <span className="votes">{this.state.votes} votes</span>
+                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                    </div> 
+                    : <div>
+                        <span className="votes">{this.state.votes} votes</span>
+                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                    </div>
+                }
             </div>
         )
     }

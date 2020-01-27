@@ -2,7 +2,7 @@
     position: relative;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: .25rem;
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -12,6 +12,10 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+
+.card div {
+    width: 100%;
 }
 
 .card.edited {
@@ -45,9 +49,10 @@
     left: 8px;
 }
 
-.card  .card-title {
+.card .card-title {
     text-align: center;
-    margin: 0;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .card .votes {

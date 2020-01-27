@@ -154,3 +154,18 @@ export const editPost = payload => {
 //     type: actionTypes.EDIT_POST,
 //     payload: payload
 // })
+
+export const votePost = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get(`http://localhost:8080/p/v/${payload.id}`, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                // dispatch(editPostDispatching(resp.data.posts))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}

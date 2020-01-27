@@ -23,7 +23,7 @@
     margin-left: 5px;
 }
 
-.card.staff .editIcon {
+.card.staff .editIcon, .card.staff .voteIcon {
     position: absolute;
     top: 8px;
     right: 8px;

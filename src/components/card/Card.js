@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTimes, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './Card.css';
 
@@ -18,7 +18,8 @@ class Card extends Component {
 
     state = {
         editing: false,
-        postContent: this.props.content
+        postContent: this.props.content,
+        votes: this.props.votes
     }
 
     toggleEditing = _ => {
@@ -31,16 +32,28 @@ class Card extends Component {
         // change the inputs in the state
         const myStateObj = {};
         myStateObj[event.target.name] = event.target.value;
-        this.setState(myStateObj)
+        this.setState(myStateObj);
     }
 
     editPost = event => {
         event.preventDefault();
         this.setState({
             editing: false
-        })
+        });
         this.props.editPost({
             content: this.state.postContent,
+            id: this.props._id
+        });
+    }
+
+    votePost = event => {
+        event.preventDefault();
+        let newVotes = this.state.votes;
+        newVotes++;
+        this.setState({
+            votes: newVotes
+        })
+        this.props.votePost({
             id: this.props._id
         });
     }
@@ -52,14 +65,15 @@ class Card extends Component {
                 this.props.user === this.props.loggedInUser ? 
                     <div>
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
-                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.props.votes} votes</span></h5>
+                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.state.votes} votes</span></h5>
                         <p className="view-link">
                             <NavLink  to={'/post/'+this.props._id}>View</NavLink>
                         </p>
                     </div>
                         :
                     <div>
-                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.props.votes} votes</span></h5>
+                        <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
+                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.state.votes} votes</span></h5>
                         <p className="view-link">
                             <NavLink  to={'/post/'+this.props._id}>View</NavLink>
                         </p>
@@ -78,6 +92,7 @@ class Card extends Component {
 
 const mapDispatchToProps = dispatch => ({
     editPost: editObj => dispatch(actions.editPost(editObj)),
+    votePost: id => dispatch(actions.votePost(id))
 })
 
 export default connect(null, mapDispatchToProps)(Card);

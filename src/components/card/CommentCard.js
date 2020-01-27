@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTimes, faCheck, faPlus, faComment } from '@fortawesome/free-solid-svg-icons';
 
 import './Card.css';
 
@@ -70,6 +70,7 @@ class CommentCard extends Component {
                     <input name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                     <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
                     <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                    <FontAwesomeIcon className="icon typeIcon" icon={faComment} />
                 </div> 
                 : this.props.user === this.props.loggedInUser && this.state.username 
                     ? 
@@ -77,6 +78,7 @@ class CommentCard extends Component {
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title">{this.state.commentContent}</h5>
+                        <FontAwesomeIcon className="icon typeIcon" icon={faComment} />
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
@@ -85,10 +87,12 @@ class CommentCard extends Component {
                         <FontAwesomeIcon className="icon voteIcon" onClick={this.voteComment} icon={faPlus} />
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title">{this.state.commentContent}</h5>
+                        <FontAwesomeIcon className="icon typeIcon" icon={faComment} />
                     </div> 
                     : <div>
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title">{this.state.commentContent}</h5>
+                        <FontAwesomeIcon className="icon typeIcon" icon={faComment} />
                     </div>
                 }
             </div>

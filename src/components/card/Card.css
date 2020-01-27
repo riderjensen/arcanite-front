@@ -39,6 +39,12 @@
     right: 8px;
 }
 
+.card .typeIcon {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+}
+
 .card  .card-title {
     text-align: center;
     margin: 0;

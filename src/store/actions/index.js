@@ -100,12 +100,9 @@ const submitPostDispatching = () => ({
 
 export const getPosts = () => {
     return dispatch => {
-        const token = localStorage.arcaniteToken;
-        if (token) {
-            return axios.get('http://localhost:8080/a').then(resp => {
-                dispatch(getPostsDispatching(resp.data))
-            }).catch(err => console.log(err))
-        }
+        return axios.get('http://localhost:8080/a').then(resp => {
+            dispatch(getPostsDispatching(resp.data))
+        }).catch(err => console.log(err))
     }
 }
 

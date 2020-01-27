@@ -23,6 +23,13 @@ class Post extends Component {
         this.props.getOnePost(id);
     }
 
+    // addComment = event => {
+    //     event.preventDefault();
+    //     this.props.addComment({
+    //         id: this.props._id
+    //     });
+    // }
+
     render () {
         return (
             <div className="one-post">
@@ -32,6 +39,7 @@ class Post extends Component {
                     <p>Created At: {this.props.post.createdAt}</p>
                     <p>Edited: {this.props.post.edited}</p>
                     {console.log(this.props.post)}
+                    {/* <button onClick={addComment}>Comment</button> */}
                 </div>
                 <div className="post-comments">
                 {this.props.post ? this.props.post.comments ? this.props.post.comments.length > 0 ? this.props.post.comments.map(comment => {
@@ -50,7 +58,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    getOnePost: id => dispatch(actions.getOnePost(id))
+    getOnePost: id => dispatch(actions.getOnePost(id)),
+    addComment: editObj => dispatch(actions.addComment(editObj)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

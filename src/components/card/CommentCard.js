@@ -17,7 +17,7 @@ class CommentCard extends Component {
 
     state = {
         editing: false,
-        postContent: this.props.content,
+        commentContet: this.props.content,
         votes: this.props.votes,
         username: this.props.username
     }
@@ -35,25 +35,25 @@ class CommentCard extends Component {
         this.setState(myStateObj);
     }
 
-    editPost = event => {
+    editComment = event => {
         event.preventDefault();
         this.setState({
             editing: false
         });
-        this.props.editPost({
-            content: this.state.postContent,
+        this.props.editComment({
+            content: this.state.commentContent,
             id: this.props._id
         });
     }
 
-    votePost = event => {
+    voteComment = event => {
         event.preventDefault();
         let newVotes = this.state.votes;
         newVotes++;
         this.setState({
             votes: newVotes
         })
-        this.props.votePost({
+        this.props.voteComment({
             id: this.props._id
         });
     }
@@ -76,19 +76,19 @@ class CommentCard extends Component {
                     <div>
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
                         <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title">{this.state.postContent}</h5>
+                        <h5 className="card-title">{this.state.commentContet}</h5>
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
                     ? 
                     <div>
-                        <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
+                        <FontAwesomeIcon className="icon voteIcon" onClick={this.voteComment} icon={faPlus} />
                         <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title">{this.state.postContent}</h5>
+                        <h5 className="card-title">{this.state.commentContet}</h5>
                     </div> 
                     : <div>
                         <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title">{this.state.postContent}</h5>
+                        <h5 className="card-title">{this.state.commentContet}</h5>
                     </div>
                 }
             </div>
@@ -103,8 +103,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    editPost: editObj => dispatch(actions.editPost(editObj)),
-    votePost: id => dispatch(actions.votePost(id))
+    editComment: id => dispatch(actions.editComment(id)),
+    voteComment: id => dispatch(actions.voteComment(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentCard);

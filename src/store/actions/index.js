@@ -155,11 +155,60 @@ export const editPost = payload => {
 //     payload: payload
 // })
 
+export const editComment = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.patch(`http://localhost:8080/c/${payload.id}`, {
+                "content": payload.content
+            }, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                // dispatch(editPostDispatching(resp.data.posts))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}
+
+export const addComment = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.post(`http://localhost:8080/c/${payload.id}`, {
+                "content": payload.content
+            }, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                // dispatch(editPostDispatching(resp.data.posts))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}
+
 export const votePost = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
             return axios.get(`http://localhost:8080/p/v/${payload.id}`, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                // dispatch(votePostDispatching(resp.data.posts))
+            }).catch(error  => console.log(error.response)
+        )}
+    }
+}
+
+export const voteComment = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get(`http://localhost:8080/c/v/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {

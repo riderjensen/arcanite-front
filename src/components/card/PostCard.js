@@ -63,7 +63,7 @@ class PostCard extends Component {
         let cardContent;
 
         return (
-            <div className={`card staff ${this.props.edited ? "edited" : ""}`}>
+            <div className={`card ${this.props.edited ? "edited" : ""}`}>
                 {cardContent}
                 {this.state.editing   
                 ? 

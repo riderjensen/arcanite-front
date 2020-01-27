@@ -62,7 +62,7 @@ class CommentCard extends Component {
         let cardContent;
 
         return (
-            <div className={`card staff ${this.props.edited ? "edited" : ""}`}>
+            <div className={`card comment ${this.props.edited ? "edited" : ""}`}>
                 {cardContent}
                 {this.state.editing   
                 ? 

@@ -1,4 +1,4 @@
-.card.staff {
+.card {
     position: relative;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: .25rem;
@@ -14,49 +14,52 @@
     justify-content: center;
 }
 
-.card.staff.edited {
+.card.edited {
     border: 1px solid #f5c6cb;
 }
 
-.card.staff .edit {
+.card .edit {
     display: flex;
     align-items: center;
 }
 
-.card.staff .edit input {
+.card .edit input {
     width: 100%;
 }
 
-.card.staff .icon {
+.card .icon {
     color: #c16ecf;
     height: 20px;
     margin-left: 5px;
 }
 
-.card.staff .editIcon, .card.staff .voteIcon {
+.card .editIcon, .card .voteIcon {
     position: absolute;
     top: 8px;
     right: 8px;
 }
 
-.card.staff  .card-title {
+.card  .card-title {
     text-align: center;
     margin: 0;
 }
 
-.card.staff .votes {
+.card .votes {
     position: absolute;
     top: 0;
     left: 5px;
     font-size: 12px;
 }
 
-.card.staff .view-link {
+.card .view-link {
     text-align: center;
 }
  
 @media screen and (min-width: 768px) {
-    .card.staff {
+    .card {
         width: 400px;
+    }
+    .card.comment {
+        width: 55%;
     }
 }

@@ -17,7 +17,7 @@ class CommentCard extends Component {
 
     state = {
         editing: false,
-        commentContet: this.props.content,
+        commentContent: this.props.content,
         votes: this.props.votes,
         username: this.props.username
     }
@@ -67,8 +67,8 @@ class CommentCard extends Component {
                 {this.state.editing   
                 ? 
                 <div className="edit">
-                    <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
-                    <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
+                    <input name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
+                    <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
                     <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
                 </div> 
                 : this.props.user === this.props.loggedInUser && this.state.username 
@@ -76,7 +76,7 @@ class CommentCard extends Component {
                     <div>
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
                         <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title">{this.state.commentContet}</h5>
+                        <h5 className="card-title">{this.state.commentContent}</h5>
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
@@ -84,11 +84,11 @@ class CommentCard extends Component {
                     <div>
                         <FontAwesomeIcon className="icon voteIcon" onClick={this.voteComment} icon={faPlus} />
                         <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title">{this.state.commentContet}</h5>
+                        <h5 className="card-title">{this.state.commentContent}</h5>
                     </div> 
                     : <div>
                         <span className="votes">{this.state.votes} votes</span>
-                        <h5 className="card-title">{this.state.commentContet}</h5>
+                        <h5 className="card-title">{this.state.commentContent}</h5>
                     </div>
                 }
             </div>

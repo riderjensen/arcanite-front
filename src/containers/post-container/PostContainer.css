@@ -1,8 +1,13 @@
-.post-header {
+.one-post .post-header {
     background-color: #fff;
-    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #282c34;
+}
+
+.one-post .post-comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

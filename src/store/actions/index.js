@@ -143,13 +143,14 @@ export const editPost = payload => {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
-                dispatch(editPostDispatching(resp.data.posts))
+                console.log(resp)
+                // dispatch(editPostDispatching(resp.data.posts))
             }).catch(error  => console.log(error.response)
         )}
     }
 }
 
-const editPostDispatching = payload => ({
-    type: actionTypes.EDIT_POST,
-    payload: payload
-})
+// const editPostDispatching = payload => ({
+//     type: actionTypes.EDIT_POST,
+//     payload: payload
+// })

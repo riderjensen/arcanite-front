@@ -14,6 +14,10 @@
     justify-content: center;
 }
 
+.card.staff.edited {
+    border: 1px solid #f5c6cb;
+}
+
 .card.staff .edit {
     display: flex;
     align-items: center;

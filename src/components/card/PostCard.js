@@ -8,7 +8,7 @@ import './Card.css';
 
 import * as actions from '../../store/actions/index';
 
-class Card extends Component {
+class PostCard extends Component {
 
     constructor(props) {
         super(props);
@@ -108,4 +108,4 @@ const mapDispatchToProps = dispatch => ({
     votePost: id => dispatch(actions.votePost(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(PostCard);

@@ -20,7 +20,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="dashboard">
+            <div className="profile">
                 <h1>Profile</h1>
                 <button onClick={this.logOutFunction}>Logout</button>
                 {this.props.userPosts.length > 0 ? this.props.userPosts.map(card => (

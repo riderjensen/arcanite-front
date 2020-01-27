@@ -5,6 +5,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    margin-top: 10px;
     padding-bottom: 20px;
     height: auto;
     display: flex;
@@ -13,7 +14,12 @@
     justify-content: center;
 }
 
-.card.staff input {
+.card.staff .edit {
+    display: flex;
+    align-items: center;
+}
+
+.card.staff .edit input {
     width: 100%;
 }
 
@@ -34,7 +40,10 @@
     margin: 0;
 }
 
-.card.staff .title {
+.card.staff .votes {
+    position: absolute;
+    top: 0;
+    left: 5px;
     font-size: 12px;
 }
 

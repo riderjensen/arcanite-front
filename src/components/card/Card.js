@@ -65,24 +65,20 @@ class Card extends Component {
                 this.props.user === this.props.loggedInUser ? 
                     <div>
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
-                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.state.votes} votes</span></h5>
-                        <p className="view-link">
-                            <NavLink  to={'/post/'+this.props._id}>View</NavLink>
-                        </p>
+                        <span className="votes">{this.state.votes} votes</span>
+                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                     </div>
                         :
                     <div>
                         <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
-                        <h5 className="card-title">{this.state.postContent} - <span className="title">{this.state.votes} votes</span></h5>
-                        <p className="view-link">
-                            <NavLink  to={'/post/'+this.props._id}>View</NavLink>
-                        </p>
+                        <span className="votes">{this.state.votes} votes</span>
+                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                     </div>
                     : 
-                    <div>
+                    <div className="edit">
                         <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
-                            <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
-                            <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                        <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
+                        <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
                     </div> 
                 }
         </div>

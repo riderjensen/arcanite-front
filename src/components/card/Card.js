@@ -27,7 +27,6 @@ class Card extends Component {
         this.setState({
             editing: !this.state.editing
         })
-        console.log(!this.state.editing)
     }
 
     handleChange(event) {

@@ -12,7 +12,6 @@ class Post extends Component {
 
     state = {
         id: this.props.location.pathname.split('/')[2],
-        comments: [],
         commentContent: ''
     }
 
@@ -35,7 +34,17 @@ class Post extends Component {
         event.preventDefault();
         this.setState({
             commentContent: ''
-        })
+        });
+        const newComment = {
+            votes: 0,
+            edited: false,
+            type: "comment",
+            _id: "placeHolderId",
+            content: this.state.commentContent,
+            user: this.props.username,
+        }
+        const newArray = [newComment, ...this.props.post.comments]
+        this.props.post.comments = newArray;
         this.props.addComment({
             id: this.state.id,
             content: this.state.commentContent

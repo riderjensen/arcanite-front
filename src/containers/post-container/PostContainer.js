@@ -33,6 +33,9 @@ class Post extends Component {
 
     addComment = event => {
         event.preventDefault();
+        this.setState({
+            commentContent: ''
+        })
         this.props.addComment({
             id: this.state.id,
             content: this.state.commentContent
@@ -49,7 +52,7 @@ class Post extends Component {
                     <p>Edited: {this.props.post.edited}</p>
                     {this.props.username ? 
                         <div>
-                            <input type="text" name="commentContent" onChange={this.handleChange} />
+                            <input type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                             <button onClick={this.addComment}>Comment</button>
                         </div> : null}
                 </div>

@@ -96,6 +96,7 @@
         margin-right: 30px;
         flex-direction: row;
         justify-content: flex-end;
+        align-items: center;
     }
   
     .navbar .main-nav li {

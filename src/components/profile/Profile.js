@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import PostCard from '../card/PostCard';
 import CommentCard from '../card/CommentCard';
+import Spinner from '../spinner/Spinner';
 
 import * as actions from '../../store/actions/index';
 
@@ -30,7 +32,7 @@ class Profile extends Component {
                     } else {
                         return <CommentCard {...card} loggedInUser={this.props.username} key={card._id} />
                     }                       
-                }) : null}
+                }) : <Spinner />}
             </div>
         )
     }

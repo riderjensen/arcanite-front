@@ -89,7 +89,7 @@ class CommentCard extends Component {
                     <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
                 </div> : this.state.deleting ?
                     <div className="edit">
-                        <button className="danger" onClick={this.deletePost}>Confirm</button>
+                        <button className="danger" onClick={this.deleteComment}>Confirm</button>
                         <button onClick={this.toggleDeleting}>Cancel</button>
                     </div>
                 : this.props.user === this.props.loggedInUser && this.state.username 

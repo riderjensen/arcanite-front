@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import PostCard from '../../components/card/PostCard';
+import Spinner from '../../components/spinner/Spinner';
 
 import * as actions from '../../store/actions/index';
 
@@ -20,9 +21,9 @@ class Home extends Component {
         return (
             <div>
                 <div className="main-header">
-                    {this.props.posts.map(post => (
+                    {this.props.posts.length > 0 ? this.props.posts.map(post => (
                         <PostCard {...post} loggedInUser={this.props.username} key={post._id} />
-                    ))}
+                    )) : <Spinner />}
                 </div>
             </div>
         )

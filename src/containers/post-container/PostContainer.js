@@ -52,15 +52,15 @@ class Post extends Component {
     }
 
     render () {
+        const date = new Date(this.props.post.createdAt)
+
         return (
             <div className="one-post">
                 <div className="post-header">
-                    <h1>{this.props.post.content}</h1>
-                    <p>Posted By: {this.props.post.user}</p>
-                    <p>Created At: {this.props.post.createdAt}</p>
-                    <p>Edited: {this.props.post.edited}</p>
+                    <h1>{this.props.post.content}<span className="edited">{this.props.post.edited ? '*' : null}</span></h1>
+                    <p className="author">Posted By: {this.props.post.user} on {date.toDateString()}</p>
                     {this.props.username ? 
-                        <div>
+                        <div className="commentInput">
                             <input type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                             <button onClick={this.addComment}>Comment</button>
                         </div> : null}

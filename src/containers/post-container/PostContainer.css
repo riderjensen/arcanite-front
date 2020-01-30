@@ -26,8 +26,8 @@
 }
 
 .one-post .post-header .commentInput input {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    margin: 10px auto;
 }
 
 .one-post .post-comments {

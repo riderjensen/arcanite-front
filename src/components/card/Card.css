@@ -39,8 +39,15 @@
 
 .card .editIcon, .card .voteIcon {
     position: absolute;
-    top: 8px;
+    top: 6px;
     right: 8px;
+}
+
+.card .deleteIcon {
+    position: absolute;
+    top: 28px;
+    right: 12px;
+    color: red;
 }
 
 .card .typeIcon {

@@ -4,7 +4,7 @@ import './Spinner.css';
 
 function Spinner () {
     return (
-        <div class="sp sp-wave"></div>
+        <div className="sp sp-wave"></div>
     )
 }
 

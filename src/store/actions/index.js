@@ -228,3 +228,31 @@ const getOnePostDispatching = payload => ({
     type: actionTypes.GET_ONE_POST,
     payload: payload
 })
+
+export const deletePost = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.delete(`http://localhost:8080/p/${payload.id}`, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+            }).catch(error  => console.log(error.response))
+        }
+    }
+}
+
+export const deleteComment = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.delete(`http://localhost:8080/c/${payload.id}`, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+            }).catch(error  => console.log(error.response))
+        }
+    }
+}

@@ -25,7 +25,7 @@ class Profile extends Component {
         return (
             <div className="profile">
                 <h1>Profile</h1>
-                <button onClick={this.logOutFunction}>Logout</button>
+                <button className="danger" onClick={this.logOutFunction}>Logout</button>
                 {this.props.userPosts.length > 0 ? this.props.userPosts.map(card => {
                     if (card.type === "post") {
                         return <PostCard {...card} loggedInUser={this.props.username} key={card._id} />

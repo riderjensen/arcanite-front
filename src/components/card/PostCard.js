@@ -18,6 +18,7 @@ class PostCard extends Component {
 
     state = {
         editing: false,
+        deleting: false,
         postContent: this.props.content,
         votes: this.props.votes,
         username: this.props.username
@@ -26,6 +27,12 @@ class PostCard extends Component {
     toggleEditing = _ => {
         this.setState({
             editing: !this.state.editing
+        })
+    }
+
+    toggleDeleting = _ => {
+        this.setState({
+            deleting: !this.state.deleting
         })
     }
 
@@ -59,24 +66,36 @@ class PostCard extends Component {
         });
     }
 
+    deletePost = event => {
+        event.preventDefault();
+        this.setState({
+            deleting: false
+        });
+        this.props.deletePost({
+            id: this.props._id
+        });
+    }
+
     render() {
-        let cardContent;
 
         return (
             <div className={`card ${this.props.edited ? "edited" : ""}`}>
-                {cardContent}
                 {this.state.editing   
                 ? 
                 <div className="edit">
                     <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
                     <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
                     <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
-                    <FontAwesomeIcon className="icon typeIcon" icon={faBullhorn} />
-                </div> 
+                </div> : this.state.deleting ?
+                    <div className="edit">
+                        <button className="danger" onClick={this.deletePost}>Confirm</button>
+                        <button onClick={this.toggleDeleting}>Cancel</button>
+                    </div>
                 : this.props.user === this.props.loggedInUser && this.state.username 
                     ? 
                     <div>
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                        <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                         <FontAwesomeIcon className="icon typeIcon" icon={faBullhorn} />
@@ -109,7 +128,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     editPost: editObj => dispatch(actions.editPost(editObj)),
-    votePost: id => dispatch(actions.votePost(id))
+    votePost: id => dispatch(actions.votePost(id)),
+    deletePost: id => dispatch(actions.deletePost(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostCard);

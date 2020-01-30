@@ -17,6 +17,7 @@ class CommentCard extends Component {
 
     state = {
         editing: false,
+        deleting: false,
         commentContent: this.props.content,
         votes: this.props.votes,
         username: this.props.username
@@ -25,6 +26,12 @@ class CommentCard extends Component {
     toggleEditing = _ => {
         this.setState({
             editing: !this.state.editing
+        })
+    }
+
+    toggleDeleting = _ => {
+        this.setState({
+            deleting: !this.state.deleting
         })
     }
 
@@ -58,6 +65,16 @@ class CommentCard extends Component {
         });
     }
 
+    deleteComment = event => {
+        event.preventDefault();
+        this.setState({
+            deleting: false
+        });
+        this.props.deleteComment({
+            id: this.props._id
+        });
+    }
+
     render() {
         let cardContent;
 
@@ -70,12 +87,16 @@ class CommentCard extends Component {
                     <input name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                     <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
                     <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
-                    <FontAwesomeIcon className="icon typeIcon" icon={faComment} />
-                </div> 
+                </div> : this.state.deleting ?
+                    <div className="edit">
+                        <button className="danger" onClick={this.deletePost}>Confirm</button>
+                        <button onClick={this.toggleDeleting}>Cancel</button>
+                    </div>
                 : this.props.user === this.props.loggedInUser && this.state.username 
                     ? 
                     <div>
                         <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                        <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <FontAwesomeIcon className="icon typeIcon" icon={faComment} />
@@ -108,7 +129,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     editComment: id => dispatch(actions.editComment(id)),
-    voteComment: id => dispatch(actions.voteComment(id))
+    voteComment: id => dispatch(actions.voteComment(id)),
+    deleteComment: id => dispatch(actions.deleteComment(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentCard);

@@ -26,6 +26,7 @@ form input[type="submit"] {
     max-width: 100px; 
     cursor: pointer;
     margin: auto;
+    height: auto;
 }
 
 form p {

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const userLogin = user => {
     return dispatch => {
-        return axios.post('http://localhost:8080/auth/login', {
+        return axios.post('https://project-arcanite.herokuapp.com/auth/login', {
             password: user.password,
             username: user.username
         }, {
@@ -25,7 +25,7 @@ const loginUserDispatching = userObj => ({
 
 export const userSignUp = user => {
     return dispatch => {
-        return axios.post('http://localhost:8080/auth/signup', {
+        return axios.post('https://project-arcanite.herokuapp.com/auth/signup', {
             password: user.password,
             username: user.username,
             email: user.email
@@ -51,7 +51,7 @@ export const authCheckState = () => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.get('http://localhost:8080/auth/token', { headers: {
+            return axios.get('https://project-arcanite.herokuapp.com/auth/token', { headers: {
                 'Authorization' : `${token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -81,7 +81,7 @@ export const submitPost = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.post('http://localhost:8080/p', {
+            return axios.post('https://project-arcanite.herokuapp.com/p', {
                 "content": payload.content
             }, { headers: {
                 'Authorization' : `${token}`,
@@ -100,7 +100,7 @@ const submitPostDispatching = () => ({
 
 export const getPosts = () => {
     return dispatch => {
-        return axios.get('http://localhost:8080/a').then(resp => {
+        return axios.get('https://project-arcanite.herokuapp.com/a').then(resp => {
             dispatch(getPostsDispatching(resp.data))
         }).catch(err => console.log(err))
     }
@@ -115,7 +115,7 @@ export const getUserPostsAndComments = () => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.get('http://localhost:8080/p/all', { headers: {
+            return axios.get('https://project-arcanite.herokuapp.com/p/all', { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
@@ -134,7 +134,7 @@ export const editPost = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.patch(`http://localhost:8080/p/${payload.id}`, {
+            return axios.patch(`https://project-arcanite.herokuapp.com/p/${payload.id}`, {
                 "content": payload.content
             }, { headers: {
                 'Authorization' : `${token}`,
@@ -156,7 +156,7 @@ export const editComment = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.patch(`http://localhost:8080/c/${payload.id}`, {
+            return axios.patch(`https://project-arcanite.herokuapp.com/c/${payload.id}`, {
                 "content": payload.content
             }, { headers: {
                 'Authorization' : `${token}`,
@@ -173,7 +173,7 @@ export const addComment = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.post(`http://localhost:8080/c/${payload.id}`, {
+            return axios.post(`https://project-arcanite.herokuapp.com/c/${payload.id}`, {
                 "content": payload.content
             }, { headers: {
                 'Authorization' : `${token}`,
@@ -190,7 +190,7 @@ export const votePost = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.get(`http://localhost:8080/p/v/${payload.id}`, { headers: {
+            return axios.get(`https://project-arcanite.herokuapp.com/p/v/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
@@ -205,7 +205,7 @@ export const voteComment = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.get(`http://localhost:8080/c/v/${payload.id}`, { headers: {
+            return axios.get(`https://project-arcanite.herokuapp.com/c/v/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
@@ -218,7 +218,7 @@ export const voteComment = payload => {
 
 export const getOnePost = payload => {
     return dispatch => {
-        return axios.get(`http://localhost:8080/a/${payload}`).then(resp => {
+        return axios.get(`https://project-arcanite.herokuapp.com/a/${payload}`).then(resp => {
             dispatch(getOnePostDispatching(resp.data.post))
         }).catch(error  => console.log(error.response))
     }
@@ -233,7 +233,7 @@ export const deletePost = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.delete(`http://localhost:8080/p/${payload.id}`, { headers: {
+            return axios.delete(`https://project-arcanite.herokuapp.com/p/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
@@ -247,7 +247,7 @@ export const deleteComment = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;
         if (token) {
-            return axios.delete(`http://localhost:8080/c/${payload.id}`, { headers: {
+            return axios.delete(`https://project-arcanite.herokuapp.com/c/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {

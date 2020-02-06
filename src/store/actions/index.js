@@ -14,7 +14,7 @@ export const userLogin = user => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(loginUserDispatching(resp.data.user))
             // login them in and direct to dashboard
-        }).catch(error  => console.log(error.response))
+        }).catch(error  => dispatch(addErrorDispatching(error.response)))
     }
 }
   
@@ -38,7 +38,7 @@ export const userSignUp = user => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(signUpUserDispatching(resp.data.user))
             // login them in and direct to dashboard
-        }).catch(error  => console.log(error.response))
+        }).catch(error  => dispatch(addErrorDispatching(error.response)))
     }
 }
   
@@ -61,8 +61,8 @@ export const authCheckState = () => {
                 } else {
                     dispatch(loginUserDispatching(resp.data.username))
                 }
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => console.log(error.response))
+        }
     }
 }
 
@@ -89,8 +89,8 @@ export const submitPost = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 dispatch(submitPostDispatching(resp.data.username))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -102,7 +102,7 @@ export const getPosts = () => {
     return dispatch => {
         return axios.get('https://project-arcanite.herokuapp.com/a').then(resp => {
             dispatch(getPostsDispatching(resp.data))
-        }).catch(err => console.log(err))
+        }).catch(error => dispatch(addErrorDispatching(error.response)))
     }
 }
 
@@ -120,8 +120,8 @@ export const getUserPostsAndComments = () => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 dispatch(getUserPostsAndCommentsDispatching(resp.data.posts))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -142,8 +142,8 @@ export const editPost = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(editPostDispatching(resp.data.posts))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -164,8 +164,8 @@ export const editComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(editPostDispatching(resp.data.posts))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -181,8 +181,8 @@ export const addComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(editPostDispatching(resp.data.posts))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -196,8 +196,8 @@ export const votePost = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(votePostDispatching(resp.data.posts))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -211,8 +211,8 @@ export const voteComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(votePostDispatching(resp.data.posts))
-            }).catch(error  => console.log(error.response)
-        )}
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
     }
 }
 
@@ -220,7 +220,7 @@ export const getOnePost = payload => {
     return dispatch => {
         return axios.get(`https://project-arcanite.herokuapp.com/a/${payload}`).then(resp => {
             dispatch(getOnePostDispatching(resp.data.post))
-        }).catch(error  => console.log(error.response))
+        }).catch(error  => dispatch(addErrorDispatching(error.response)))
     }
 }
 
@@ -238,7 +238,7 @@ export const deletePost = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 console.log(resp)
-            }).catch(error  => console.log(error.response))
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
         }
     }
 }
@@ -252,7 +252,22 @@ export const deleteComment = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 console.log(resp)
-            }).catch(error  => console.log(error.response))
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
         }
     }
 }
+
+export const clearError = _ => {
+    return dispatch => {
+        dispatch(clearErrorDispatching())
+    }
+}
+
+const clearErrorDispatching = payload => ({
+    type: actionTypes.CLEAR_ERROR
+})
+
+const addErrorDispatching = payload => ({
+    type: actionTypes.ADD_ERROR,
+    payload: payload.data.message
+})

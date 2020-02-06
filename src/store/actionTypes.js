@@ -9,3 +9,6 @@ export const EDIT_POST = "EDIT_POST"
 export const GET_ONE_POST = "GET_ONE_POST"
 export const DELETE_POST = "DELETE_POST"
 export const DELETE_COMMENT = "DELETE_COMMENT"
+
+export const CLEAR_ERROR = "CLEAR_ERROR"
+export const ADD_ERROR = "ADD_ERROR"

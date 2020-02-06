@@ -5,7 +5,8 @@ const initialState = {
 	modal: false,
 	posts: [],
 	userPosts: [],
-	selectedPost: {}
+	selectedPost: {},
+	error: null
   }
   
 export default function reducer(state = initialState, action) {
@@ -24,6 +25,10 @@ export default function reducer(state = initialState, action) {
 			return {...state, userPosts: action.payload}
 		case actionTypes.GET_ONE_POST:
 			return {...state, selectedPost: action.payload}
+		case actionTypes.ADD_ERROR:
+			return {...state, error: action.payload}
+		case actionTypes.CLEAR_ERROR:
+			return {...state, error: null}
 		default:
 			return state;
 	}

@@ -6,6 +6,7 @@ import UnAuthRoutes from './routes/UnAuthRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 
 import Navigation from './components/navigation/Navigation';
+import Error from './components/error/Error';
 
 import './App.css';
 
@@ -16,18 +17,18 @@ class App extends Component {
     username: null
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.onTryAutoSignIn();
     this.setState({
       username: this.props.username
     })
   }
-  
+
   render (){
     let routes = (
       <UnAuthRoutes />
     )
-    
+   
 		if (this.props.username) {
 			routes = (
         <AuthRoutes />
@@ -37,8 +38,9 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        {routes}
         <div className="App">
+          {routes}
+          {this.props.error ? <Error msg={this.props.error} clearError={this.props.clearError} /> : null}
         </div>
       </div>
     )
@@ -47,13 +49,15 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    username: state.index.username
+    username: state.index.username,
+    error: state.index.error
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onTryAutoSignIn: () => dispatch(actions.authCheckState())
+    onTryAutoSignIn: () => dispatch(actions.authCheckState()),
+    clearError: () => dispatch(actions.clearError())
 	}
 }
 

@@ -1,10 +1,12 @@
 .error-banner {
     position: absolute;
-    bottom: 10px;
     background-color: #f2dede;
     border-color: #ebccd1;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: 4px;
+    left: 25%;
+    right: 25%;
+    top: 10px;
 }
 
 .error-banner  p {
@@ -13,4 +15,10 @@
     color: #a94442;
     padding: 10px;
     margin: 0;
+}
+
+.error-banner .icon {
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }

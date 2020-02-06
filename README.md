@@ -9,7 +9,7 @@ A posting platform
 3. Add a sort function to profile to sort for comments or posts
 4. Create a frontpage algorithm to vote posts higher
 5. ~~Add delete functionality to posts and comments~~
-6. Add error reporting on application
+6. ~~Add error reporting on application~~
 
 ## Current Bugs
 

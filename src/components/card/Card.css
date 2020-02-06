@@ -51,12 +51,6 @@
     color: red;
 }
 
-.card .typeIcon {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-}
-
 .card .card-title {
     text-align: center;
     width: 80%;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faPlus, faBullhorn } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTimes, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './Card.css';
 
@@ -98,7 +98,6 @@ class PostCard extends Component {
                         <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-                        <FontAwesomeIcon className="icon typeIcon" icon={faBullhorn} />
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
@@ -107,12 +106,10 @@ class PostCard extends Component {
                         <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-                        <FontAwesomeIcon className="icon typeIcon" icon={faBullhorn} />
                     </div> 
                     : <div>
                         <span className="votes">{this.state.votes} votes</span>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
-                        <FontAwesomeIcon className="icon typeIcon" icon={faBullhorn} />
                     </div>
                 }
             </div>

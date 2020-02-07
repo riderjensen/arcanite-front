@@ -23,7 +23,10 @@ class Home extends Component {
                 <div className="main-header">
                     {this.props.posts.length > 0 ? this.props.posts.map(post => (
                         <PostCard {...post} loggedInUser={this.props.username} key={post._id} />
-                    )) : <Spinner />}
+                    )) : <div>
+                        <p style="text-center">Please be patient while our backend wakes up.</p>
+                        <Spinner />
+                        </div>}
                 </div>
             </div>
         )

@@ -7,3 +7,8 @@
     align-items: center;
     color: #282c34;
 }
+
+
+.main-header p.load-warning {
+    text-align: center;
+}

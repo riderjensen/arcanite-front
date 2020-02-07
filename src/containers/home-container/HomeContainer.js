@@ -24,8 +24,8 @@ class Home extends Component {
                     {this.props.posts.length > 0 ? this.props.posts.map(post => (
                         <PostCard {...post} loggedInUser={this.props.username} key={post._id} />
                     )) : <div>
-                        <p style="text-center">Please be patient while our backend wakes up.</p>
-                        <Spinner />
+                            <p className="load-warning">Please be patient while our backend wakes up.</p>
+                            <Spinner />
                         </div>}
                 </div>
             </div>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import Spinner from '../spinner/Spinner';
+
 import './Modal.css'
 
 import * as actions from '../../store/actions/index';
@@ -16,7 +18,8 @@ class Modal extends Component {
     }
 
     state = {
-        content: ''
+        content: '',
+        submitting: false
     }
 
     handleChange(event) {
@@ -28,6 +31,9 @@ class Modal extends Component {
 
     submitPost = event => {
         event.preventDefault();
+        this.setState({
+            submitting: true
+        })
         this.props.submitPost(this.state.content);
     }
 
@@ -39,7 +45,7 @@ class Modal extends Component {
                     <FontAwesomeIcon className="close" onClick={this.props.passFunction} icon={faTimes}></FontAwesomeIcon>
                     <h1>Create Post</h1>
                     <textarea type="text" name="content" onChange={this.handleChange} rows="3" />
-                    <button onClick={this.submitPost}>Submit</button>
+                    {this.state.submitting ? <div style="width: 100%;"><Spinner /></div>: <button onClick={this.submitPost}>Submit</button>}
                 </div>
             </div>
         )

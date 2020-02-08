@@ -14,4 +14,4 @@ A posting platform
 ## Current Bugs
 
 1. Deleting a comment seems to delete more than we want
-2. Cards dont leave immedietly after you delete them
+2. ~~Cards dont leave immedietly after you delete them~~

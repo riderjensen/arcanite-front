@@ -330,16 +330,23 @@ export const deletePost = payload => {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
-                // use the resp.data.id, get teh state.postsa
                 const state = getState();
-                const copyPosts = [...state.index.posts];
 
+                const copyPosts = [...state.index.posts];
                 copyPosts.forEach((element, i) => {
                     if (element._id === resp.data.id) {
                         copyPosts.splice(i, 1)
                     }
                 });
                 dispatch(deletePostDispatching(copyPosts))
+                
+                const copyUserPosts = [...state.index.userPosts];
+                copyUserPosts.forEach((element, i) => {
+                    if (element._id === resp.data.id) {
+                        copyUserPosts.splice(i, 1)
+                    }
+                });
+                dispatch(deleteUserPostDispatching(copyUserPosts))
             }).catch(error  => {
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
@@ -352,6 +359,11 @@ export const deletePost = payload => {
 
 const deletePostDispatching = payload => ({
     type: actionTypes.DELETE_POST,
+    payload: payload
+})
+
+const deleteUserPostDispatching = payload => ({
+    type: actionTypes.DELETE_USER_POST,
     payload: payload
 })
 

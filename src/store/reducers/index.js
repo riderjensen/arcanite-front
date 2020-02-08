@@ -23,6 +23,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, posts: action.payload}
 		case actionTypes.GET_USER_POSTS:
 			return {...state, userPosts: action.payload}
+		case actionTypes.DELETE_USER_POST:
+			return {...state, userPosts: action.payload}
 		case actionTypes.GET_ONE_POST:
 			return {...state, selectedPost: action.payload}
 		case actionTypes.ADD_ERROR:

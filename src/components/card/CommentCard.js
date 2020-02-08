@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import './Card.css';
 
@@ -65,6 +65,18 @@ class CommentCard extends Component {
         });
     }
 
+    unVoteComment = event => {
+        event.preventDefault();
+        let newVotes = this.state.votes;
+        newVotes--;
+        this.setState({
+            votes: newVotes
+        })
+        this.props.voteComment({
+            id: this.props._id
+        });
+    }
+
     deleteComment = event => {
         event.preventDefault();
         this.setState({
@@ -83,10 +95,12 @@ class CommentCard extends Component {
                 {cardContent}
                 {this.state.editing   
                 ? 
-                <div className="edit">
-                    <input name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
-                    <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
-                    <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                <div className="content edit">
+                    <div className="utilButtons">
+                        <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
+                        <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                    </div>
+                    <textarea name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                 </div> : this.state.deleting ?
                     <div className="edit">
                         <button className="danger" onClick={this.deleteComment}>Confirm</button>
@@ -94,22 +108,29 @@ class CommentCard extends Component {
                     </div>
                 : this.props.user === this.props.loggedInUser && this.state.username 
                     ? 
-                    <div>
-                        <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
-                        <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
-                        <span className="votes">{this.state.votes} votes</span>
+                    <div className="content">
+                        <div className="utilButtons">
+                            <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                            <span className="votes">{this.state.votes}</span>
+                            <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
+                        </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
                     ? 
-                    <div>
-                        <FontAwesomeIcon className="icon voteIcon" onClick={this.voteComment} icon={faPlus} />
-                        <span className="votes">{this.state.votes} votes</span>
+                    <div className="content">
+                        <div className="utilButtons">
+                            <FontAwesomeIcon className="icon voteIcon" onClick={this.voteComment} icon={faChevronUp} />
+                            <span className="votes">{this.state.votes}</span>
+                            <FontAwesomeIcon className="icon" onClick={this.unVote} icon={faChevronDown} />
+                        </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                     </div> 
-                    : <div>
-                        <span className="votes">{this.state.votes} votes</span>
+                    : <div className="content">
+                        <div className="utilButtons">
+                            <span className="votes">{this.state.votes}</span>
+                        </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                     </div>
                 }
@@ -127,7 +148,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     editComment: id => dispatch(actions.editComment(id)),
     voteComment: id => dispatch(actions.voteComment(id)),
-    deleteComment: id => dispatch(actions.deleteComment(id))
+    deleteComment: id => dispatch(actions.deleteComment(id)),
+    unVoteComment: id => dispatch(actions.unVoteComment(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentCard);

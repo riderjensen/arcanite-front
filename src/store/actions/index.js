@@ -201,6 +201,36 @@ export const votePost = payload => {
     }
 }
 
+export const unVotePost = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get(`https://project-arcanite.herokuapp.com/p/w/${payload.id}`, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                // dispatch(votePostDispatching(resp.data.posts))
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
+    }
+}
+
+export const unVoteComment = payload => {
+    return dispatch => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+            return axios.get(`https://project-arcanite.herokuapp.com/c/w/${payload.id}`, { headers: {
+                'Authorization' : `${token}`,
+                'Accept': 'application/json',
+            }}).then(resp => {
+                console.log(resp)
+                // dispatch(votePostDispatching(resp.data.posts))
+            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }
+    }
+}
+
 export const voteComment = payload => {
     return dispatch => {
         const token = localStorage.arcaniteToken;

@@ -8,47 +8,57 @@
     margin-top: 10px;
     padding-bottom: 20px;
     height: auto;
+    min-height: 40px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
-.card div {
+.card .utilButtons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card .utilButtons .votes {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.card .utilButtons .icon {
+    color: #c16ecf;
+    height: 20px;
     width: 100%;
 }
+
+.card .utilButtons .deleteIcon {
+    color: red;
+}
+
 
 .card.edited {
     border: 1px solid #f5c6cb;
 }
 
-.card .edit {
+.card .content {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.card .edit input {
     width: 100%;
+    margin: 0 30px;
 }
 
-.card .icon {
-    color: #c16ecf;
-    height: 20px;
-    margin-left: 5px;
-}
-
-.card .editIcon, .card .voteIcon {
-    position: absolute;
-    top: 6px;
-    right: 8px;
-}
-
-.card .deleteIcon {
-    position: absolute;
-    top: 28px;
-    right: 12px;
-    color: red;
+.card .edit textarea {
+    width: 100%;
 }
 
 .card .card-title {
@@ -57,12 +67,7 @@
     margin: 0 auto;
 }
 
-.card .votes {
-    position: absolute;
-    top: 0;
-    left: 5px;
-    font-size: 12px;
-}
+
 
 .card .view-link {
     text-align: center;
@@ -76,9 +81,7 @@
  
 @media screen and (min-width: 768px) {
     .card {
-        width: 400px;
-    }
-    .card.comment {
-        width: 55%;
+        width: 50%;
+        max-width: 900px;
     }
 }

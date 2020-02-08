@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import './Card.css';
 
@@ -66,6 +66,18 @@ class PostCard extends Component {
         });
     }
 
+    unVotePost = event => {
+        event.preventDefault();
+        let newVotes = this.state.votes;
+        newVotes--;
+        this.setState({
+            votes: newVotes
+        })
+        this.props.unVotePost({
+            id: this.props._id
+        });
+    }
+
     deletePost = event => {
         event.preventDefault();
         this.setState({
@@ -82,33 +94,42 @@ class PostCard extends Component {
             <div className={`card ${this.props.edited ? "edited" : ""}`}>
                 {this.state.editing   
                 ? 
-                <div className="edit">
-                    <input name="postContent" value={this.state.postContent} onChange={this.handleChange} />
-                    <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
-                    <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                <div className="content edit">
+                    <div className="utilButtons">
+                        <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editPost} />
+                        <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />  
+                    </div>
+                    <textarea name="postContent" value={this.state.postContent} onChange={this.handleChange} />
                 </div> : this.state.deleting ?
-                    <div className="edit">
+                    <div className="content edit">
                         <button className="danger" onClick={this.deletePost}>Confirm</button>
                         <button onClick={this.toggleDeleting}>Cancel</button>
                     </div>
                 : this.props.user === this.props.loggedInUser && this.state.username 
                     ? 
-                    <div>
-                        <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
-                        <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
-                        <span className="votes">{this.state.votes} votes</span>
+                    <div className="content">
+                        <div className="utilButtons">
+                            <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                            <span className="votes">{this.state.votes}</span>
+                            <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
+                        </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
                     ? 
-                    <div>
-                        <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faPlus} />
-                        <span className="votes">{this.state.votes} votes</span>
+                    <div className="content">
+                        <div className="utilButtons">
+                            <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faChevronUp} />
+                            <span className="votes">{this.state.votes}</span>
+                            <FontAwesomeIcon className="icon" icon={faChevronDown} onClick={this.unVotePost} />
+                        </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                     </div> 
-                    : <div>
-                        <span className="votes">{this.state.votes} votes</span>
+                    : <div className="content">
+                        <div className="utilButtons">
+                            <span className="votes">{this.state.votes}</span>
+                        </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                     </div>
                 }
@@ -126,7 +147,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     editPost: editObj => dispatch(actions.editPost(editObj)),
     votePost: id => dispatch(actions.votePost(id)),
-    deletePost: id => dispatch(actions.deletePost(id))
+    deletePost: id => dispatch(actions.deletePost(id)),
+    unVotePost: id => dispatch(actions.unVotePost(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostCard);

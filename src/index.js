@@ -15,7 +15,9 @@ const rootReducer = combineReducers({
     // other reducers as they are created
 })
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const reduxComps = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose;
+
+const store = createStore(rootReducer, compose(applyMiddleware(thunk), reduxComps));
 
 const app = (
     <Provider store={store}>

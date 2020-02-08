@@ -45,7 +45,7 @@ class Modal extends Component {
                     <FontAwesomeIcon className="close" onClick={this.props.passFunction} icon={faTimes}></FontAwesomeIcon>
                     <h1>Create Post</h1>
                     <textarea type="text" name="content" onChange={this.handleChange} rows="3" />
-                    {this.state.submitting ? <div style="width: 100%;"><Spinner /></div>: <button onClick={this.submitPost}>Submit</button>}
+                    {this.state.submitting ? <div style={{width: '100%'}}><Spinner /></div>: <button onClick={this.submitPost}>Submit</button>}
                 </div>
             </div>
         )

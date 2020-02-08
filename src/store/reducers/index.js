@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action) {
 		case actionTypes.SIGN_UP_USER:
 			return {...state, username: action.payload}
 		case actionTypes.SUBMIT_POST:
-			return {...state, username: action.payload}
+			return {...state, posts: action.payload}
 		case actionTypes.GET_POSTS:
 			return {...state, posts: action.payload}
 		case actionTypes.GET_USER_POSTS:
@@ -29,6 +29,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, error: action.payload}
 		case actionTypes.CLEAR_ERROR:
 			return {...state, error: null}
+		case actionTypes.DELETE_POST:
+			return {...state, posts: action.payload}
 		default:
 			return state;
 	}

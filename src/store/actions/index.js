@@ -13,7 +13,6 @@ export const userLogin = user => {
         }).then(resp => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(loginUserDispatching(resp.data.user))
-            // login them in and direct to dashboard
         }).catch(error  => {
             setTimeout(() => {
                 dispatch(clearErrorDispatching())
@@ -88,7 +87,7 @@ const logOutUserDispatching = () => ({
 })
 
 export const submitPost = payload => {
-    return dispatch => {
+    return (dispatch, getState) => {
         const token = localStorage.arcaniteToken;
         if (token) {
             return axios.post('https://project-arcanite.herokuapp.com/p', {
@@ -98,7 +97,10 @@ export const submitPost = payload => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             }}).then(resp => {
-                dispatch(submitPostDispatching(resp.data.username))
+                const state = getState();
+                const copyPosts = [...state.index.posts];
+                copyPosts.unshift(resp.data.post)
+                dispatch(submitPostDispatching(copyPosts))
             }).catch(error  => {
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
@@ -109,8 +111,9 @@ export const submitPost = payload => {
     }
 }
 
-const submitPostDispatching = () => ({
-    type: actionTypes.SUBMIT_POST
+const submitPostDispatching = posts => ({
+    type: actionTypes.SUBMIT_POST,
+    payload: posts
 })
 
 export const getPosts = () => {
@@ -320,14 +323,23 @@ const getOnePostDispatching = payload => ({
 })
 
 export const deletePost = payload => {
-    return dispatch => {
+    return (dispatch, getState) => {
         const token = localStorage.arcaniteToken;
         if (token) {
             return axios.delete(`https://project-arcanite.herokuapp.com/p/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
-                console.log(resp)
+                // use the resp.data.id, get teh state.postsa
+                const state = getState();
+                const copyPosts = [...state.index.posts];
+
+                copyPosts.forEach((element, i) => {
+                    if (element._id === resp.data.id) {
+                        copyPosts.splice(i, 1)
+                    }
+                });
+                dispatch(deletePostDispatching(copyPosts))
             }).catch(error  => {
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
@@ -337,6 +349,11 @@ export const deletePost = payload => {
         }
     }
 }
+
+const deletePostDispatching = payload => ({
+    type: actionTypes.DELETE_POST,
+    payload: payload
+})
 
 export const deleteComment = payload => {
     return dispatch => {

@@ -14,7 +14,12 @@ export const userLogin = user => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(loginUserDispatching(resp.data.user))
             // login them in and direct to dashboard
-        }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }).catch(error  => {
+            setTimeout(() => {
+                dispatch(clearErrorDispatching())
+            }, 10000)
+            dispatch(addErrorDispatching(error.response))
+        })
     }
 }
   
@@ -38,7 +43,12 @@ export const userSignUp = user => {
             localStorage.setItem("arcaniteToken", resp.data.token)
             dispatch(signUpUserDispatching(resp.data.user))
             // login them in and direct to dashboard
-        }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }).catch(error  => {
+            setTimeout(() => {
+                dispatch(clearErrorDispatching())
+            }, 10000)
+            dispatch(addErrorDispatching(error.response))
+        })
     }
 }
   
@@ -89,7 +99,12 @@ export const submitPost = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 dispatch(submitPostDispatching(resp.data.username))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -102,7 +117,12 @@ export const getPosts = () => {
     return dispatch => {
         return axios.get('https://project-arcanite.herokuapp.com/a').then(resp => {
             dispatch(getPostsDispatching(resp.data))
-        }).catch(error => dispatch(addErrorDispatching(error.response)))
+        }).catch(error => {
+            setTimeout(() => {
+                dispatch(clearErrorDispatching())
+            }, 10000)
+            dispatch(addErrorDispatching(error.response))
+        })
     }
 }
 
@@ -120,7 +140,12 @@ export const getUserPostsAndComments = () => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 dispatch(getUserPostsAndCommentsDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -142,15 +167,15 @@ export const editPost = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(editPostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
-
-// const editPostDispatching = payload => ({
-//     type: actionTypes.EDIT_POST,
-//     payload: payload
-// })
 
 export const editComment = payload => {
     return dispatch => {
@@ -164,7 +189,12 @@ export const editComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(editPostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -181,7 +211,12 @@ export const addComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(editPostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -196,7 +231,12 @@ export const votePost = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(votePostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -211,7 +251,12 @@ export const unVotePost = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(votePostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -226,7 +271,12 @@ export const unVoteComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(votePostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -241,7 +291,12 @@ export const voteComment = payload => {
             }}).then(resp => {
                 console.log(resp)
                 // dispatch(votePostDispatching(resp.data.posts))
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -250,7 +305,12 @@ export const getOnePost = payload => {
     return dispatch => {
         return axios.get(`https://project-arcanite.herokuapp.com/a/${payload}`).then(resp => {
             dispatch(getOnePostDispatching(resp.data.post))
-        }).catch(error  => dispatch(addErrorDispatching(error.response)))
+        }).catch(error  => {
+            setTimeout(() => {
+                dispatch(clearErrorDispatching())
+            }, 10000)
+            dispatch(addErrorDispatching(error.response))
+        })
     }
 }
 
@@ -268,7 +328,12 @@ export const deletePost = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 console.log(resp)
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -282,7 +347,12 @@ export const deleteComment = payload => {
                 'Accept': 'application/json',
             }}).then(resp => {
                 console.log(resp)
-            }).catch(error  => dispatch(addErrorDispatching(error.response)))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
         }
     }
 }
@@ -293,11 +363,15 @@ export const clearError = _ => {
     }
 }
 
-const clearErrorDispatching = payload => ({
+const clearErrorDispatching = _ => ({
     type: actionTypes.CLEAR_ERROR
 })
 
-const addErrorDispatching = payload => ({
-    type: actionTypes.ADD_ERROR,
-    payload: payload.data.message
-})
+const addErrorDispatching = payload => {
+    let message = '';
+    payload && payload.data ? message = payload.data.message : message =  'An unexpected error occured. Please try again later.'
+    return {
+        type: actionTypes.ADD_ERROR,
+        payload: message
+    }
+}

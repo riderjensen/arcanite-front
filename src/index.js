@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
     // other reducers as they are created
 })
 
-const reduxComps = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose;
+const reduxComps = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()) || compose;
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk), reduxComps));
 

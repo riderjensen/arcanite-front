@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import './Modal.css'
 
@@ -34,9 +36,9 @@ class Modal extends Component {
             <div className="overlay">
                 <div onClick={this.props.passFunction} className="overlay"></div>
                 <div onClick={this.preventIssue} className="modal">
-                    <span className="close" onClick={this.props.passFunction}>X</span>
+                    <FontAwesomeIcon className="close" onClick={this.props.passFunction} icon={faTimes}></FontAwesomeIcon>
                     <h1>Create Post</h1>
-                    <input type="text" name="content" onChange={this.handleChange} />
+                    <textarea type="text" name="content" onChange={this.handleChange} rows="3" />
                     <button onClick={this.submitPost}>Submit</button>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import Modal from '../modal/Modal';
 
@@ -46,7 +48,7 @@ class NoAuthNavigation extends Component {
                     <NavLink to="/profile">{this.props.username.toUpperCase()}</NavLink>
                 </li>
                 <li className="right-align">
-                    <button className="emphasis" onClick={this.showModal}>Create Post</button>
+                    <button onClick={this.showModal}><FontAwesomeIcon  icon={faEdit}></FontAwesomeIcon></button>
                 </li>
             </ul>
         )

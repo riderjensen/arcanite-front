@@ -61,7 +61,7 @@ class Post extends Component {
                     <p className="author">Posted By: {this.props.post.user} on {date.toDateString()}</p>
                     {this.props.username ? 
                         <div className="commentInput">
-                            <input type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
+                            <textarea type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                             <button onClick={this.addComment}>Comment</button>
                         </div> : null}
                 </div>

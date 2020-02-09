@@ -13,8 +13,8 @@ A posting platform
 
 ## Current Bugs
 
-1. Deleting a comment seems to delete more than we want
+1. ~~Deleting a comment seems to delete more than we want~~
 2. ~~Cards dont leave immedietly after you delete them~~
 3. ~~Multiple comments show up as the same content as the first one until you refresh the page~~
 4. Modal stays open after async call completes
-5. You cant delete the comment you just created
+5. ~~You cant delete the comment you just created~~

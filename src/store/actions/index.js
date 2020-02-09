@@ -215,7 +215,12 @@ export const addComment = payload => {
                 const state = getState();
                 const selectedPost = {...state.index.selectedPost};
                 selectedPost.comments.unshift(resp.data)
-                dispatch(addcommentDispatching(selectedPost))
+                dispatch(addCommentDispatching(selectedPost))
+
+                // add comment to user comments
+                const copyUserComments = [...state.index.userPosts];
+                copyUserComments.push(resp.data)
+                dispatch(addUserCommentDispatching(copyUserComments))
             }).catch(error  => {
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
@@ -226,8 +231,13 @@ export const addComment = payload => {
     }
 }
 
-const addcommentDispatching = payload => ({
+const addCommentDispatching = payload => ({
     type: actionTypes.ADD_COMMENT,
+    payload: payload
+})
+
+const addUserCommentDispatching = payload => ({
+    type: actionTypes.ADD_USER_COMMENT,
     payload: payload
 })
 
@@ -384,13 +394,26 @@ export const deleteComment = payload => {
             }}).then(resp => {
                 const state = getState();
                 const selectedPost = {...state.index.selectedPost};
-                selectedPost.comments.forEach((comment, i) => {
-                    if(comment._id === resp.data.id) {
-                        selectedPost.comments.splice(i, 1)
-                    }
-                })
-                dispatch(deleteCommentDispatching(selectedPost))
+                if (selectedPost.comments) {
+                    selectedPost.comments.forEach((comment, i) => {
+                        if(comment._id === resp.data.id) {
+                            selectedPost.comments.splice(i, 1)
+                        }
+                    })
+                    dispatch(deleteCommentDispatching(selectedPost))
+                }
+
+                const copyUserComments = [...state.index.userPosts];
+                if (copyUserComments) {
+                    copyUserComments.forEach((element, i) => {
+                        if (element._id === resp.data.id) {
+                            copyUserComments.splice(i, 1)
+                        }
+                    });
+                    dispatch(deleteUserCommentDispatching(copyUserComments))
+                }
             }).catch(error  => {
+                console.log(error)
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
                 }, 10000)
@@ -402,6 +425,11 @@ export const deleteComment = payload => {
 
 const deleteCommentDispatching = payload => ({
     type: actionTypes.DELETE_COMMENT,
+    payload: payload
+})
+
+const deleteUserCommentDispatching = payload => ({
+    type: actionTypes.DELETE_USER_COMMENT,
     payload: payload
 })
 

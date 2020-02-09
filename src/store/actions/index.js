@@ -375,14 +375,21 @@ const deleteUserPostDispatching = payload => ({
 })
 
 export const deleteComment = payload => {
-    return dispatch => {
+    return (dispatch, getState) => {
         const token = localStorage.arcaniteToken;
         if (token) {
             return axios.delete(`https://project-arcanite.herokuapp.com/c/${payload.id}`, { headers: {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
-                console.log(resp)
+                const state = getState();
+                const selectedPost = {...state.index.selectedPost};
+                selectedPost.comments.forEach((comment, i) => {
+                    if(comment._id === resp.data.id) {
+                        selectedPost.comments.splice(i, 1)
+                    }
+                })
+                dispatch(deleteCommentDispatching(selectedPost))
             }).catch(error  => {
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
@@ -392,6 +399,11 @@ export const deleteComment = payload => {
         }
     }
 }
+
+const deleteCommentDispatching = payload => ({
+    type: actionTypes.DELETE_COMMENT,
+    payload: payload
+})
 
 export const clearError = _ => {
     return dispatch => {

@@ -10,6 +10,7 @@ export const GET_ONE_POST = "GET_ONE_POST"
 export const DELETE_USER_POST = "DELETE_USER_POST"
 export const DELETE_POST = "DELETE_POST"
 export const DELETE_COMMENT = "DELETE_COMMENT"
+export const ADD_COMMENT = "ADD_COMMENT"
 
 export const CLEAR_ERROR = "CLEAR_ERROR"
 export const ADD_ERROR = "ADD_ERROR"

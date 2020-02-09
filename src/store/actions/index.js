@@ -203,7 +203,7 @@ export const editComment = payload => {
 }
 
 export const addComment = payload => {
-    return dispatch => {
+    return (dispatch, getState) => {
         const token = localStorage.arcaniteToken;
         if (token) {
             return axios.post(`https://project-arcanite.herokuapp.com/c/${payload.id}`, {
@@ -212,8 +212,10 @@ export const addComment = payload => {
                 'Authorization' : `${token}`,
                 'Accept': 'application/json',
             }}).then(resp => {
-                console.log(resp)
-                // dispatch(editPostDispatching(resp.data.posts))
+                const state = getState();
+                const selectedPost = {...state.index.selectedPost};
+                selectedPost.comments.unshift(resp.data)
+                dispatch(addcommentDispatching(selectedPost))
             }).catch(error  => {
                 setTimeout(() => {
                     dispatch(clearErrorDispatching())
@@ -223,6 +225,11 @@ export const addComment = payload => {
         }
     }
 }
+
+const addcommentDispatching = payload => ({
+    type: actionTypes.ADD_COMMENT,
+    payload: payload
+})
 
 export const votePost = payload => {
     return dispatch => {
@@ -339,7 +346,7 @@ export const deletePost = payload => {
                     }
                 });
                 dispatch(deletePostDispatching(copyPosts))
-                
+
                 const copyUserPosts = [...state.index.userPosts];
                 copyUserPosts.forEach((element, i) => {
                     if (element._id === resp.data.id) {

@@ -33,6 +33,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, error: null}
 		case actionTypes.DELETE_POST:
 			return {...state, posts: action.payload}
+		case actionTypes.ADD_COMMENT:
+			return {...state, selectedPost: action.payload}
 		default:
 			return state;
 	}

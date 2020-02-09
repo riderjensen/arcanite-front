@@ -35,11 +35,12 @@ class Post extends Component {
         this.setState({
             commentContent: ''
         });
+        const commentID = new Date()
         const newComment = {
             votes: 0,
             edited: false,
             type: "comment",
-            _id: "placeHolderId",
+            _id: commentID.getTime(),
             content: this.state.commentContent,
             user: this.props.username,
         }

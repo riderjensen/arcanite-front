@@ -10,6 +10,7 @@ A posting platform
 4. Create a frontpage algorithm to vote posts higher
 5. ~~Add delete functionality to posts and comments~~
 6. ~~Add error reporting on application~~
+7. Make a text counter for max post length
 
 ## Current Bugs
 

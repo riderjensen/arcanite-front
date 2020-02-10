@@ -65,3 +65,7 @@ button {
 button:disabled {
   background-color: lightgrey;
 }
+
+.CircularProgressbar.svgerror .CircularProgressbar-path {
+  stroke: red;
+}

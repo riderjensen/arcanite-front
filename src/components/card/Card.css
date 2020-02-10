@@ -45,6 +45,9 @@
     color: red;
 }
 
+.card .utilButtons .disabled {
+    color: lightgrey;
+}
 
 .card.edited {
     border: 1px solid #f5c6cb;
@@ -67,8 +70,6 @@
     width: 80%;
     margin: 0 auto;
 }
-
-
 
 .card .view-link {
     text-align: center;

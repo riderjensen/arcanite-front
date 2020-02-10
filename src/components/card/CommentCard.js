@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { CircularProgressbar } from 'react-circular-progressbar';
 
 import './Card.css';
+import 'react-circular-progressbar/dist/styles.css';
 
 import * as actions from '../../store/actions/index';
 
@@ -23,9 +25,16 @@ class CommentCard extends Component {
         username: this.props.username
     }
 
-    toggleEditing = _ => {
+    startEditing = _ => {
         this.setState({
-            editing: !this.state.editing
+            editing: true
+        })
+    }
+
+    endEditing = _ => {
+        this.setState({
+            editing: false,
+            postContent: this.props.content
         })
     }
 
@@ -98,11 +107,13 @@ class CommentCard extends Component {
                 <div className="content edit">
                     <div className="utilButtons">
                         <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
-                        <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.toggleEditing} />
+                        <CircularProgressbar className={this.state.commentContent.length > 250 ? 'svgerror' : null} value={this.state.commentContent.length} maxValue={250} minValue={0} strokeWidth={25} />
+                        <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.endEditing} />
                     </div>
                     <textarea name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                 </div> : this.state.deleting ?
                     <div className="edit">
+                        <p>Are you sure you want to delete this comment?</p>
                         <button className="danger" onClick={this.deleteComment}>Confirm</button>
                         <button onClick={this.toggleDeleting}>Cancel</button>
                     </div>
@@ -110,7 +121,7 @@ class CommentCard extends Component {
                     ? 
                     <div className="content">
                         <div className="utilButtons">
-                            <FontAwesomeIcon className="icon editIcon" onClick={this.toggleEditing} icon={faPencilAlt} />
+                            <FontAwesomeIcon className="icon editIcon" onClick={this.startEditing} icon={faPencilAlt} />
                             <span className="votes">{this.state.votes}</span>
                             <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>

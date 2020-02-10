@@ -1,5 +1,5 @@
 .error-banner {
-    position: absolute;
+    position: fixed;
     background-color: #f2dede;
     border-color: #ebccd1;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
@@ -7,6 +7,7 @@
     left: 25%;
     right: 25%;
     top: 10px;
+    z-index: 10;
 }
 
 .error-banner  p {

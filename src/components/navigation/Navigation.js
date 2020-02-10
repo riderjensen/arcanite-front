@@ -14,15 +14,13 @@ class NoAuthNavigation extends Component {
         modal: false
     }
 
-    showModal = event => {
-        event.preventDefault();
+    showModal = _ => {
         this.setState({
             modal: true
         })
     }
 
-    hideModal = event => {
-        event.preventDefault();
+    hideModal = _ => {
         this.setState({
             modal: false
         })

@@ -80,6 +80,13 @@
     background-color: #dc3545;
     border-color: #dc3545;
 }
+
+.card .postInfo {
+    position: absolute;
+    bottom: 5px;
+    font-size: 12px;
+    color: lightslategray;
+}
  
 @media screen and (min-width: 768px) {
     .card {

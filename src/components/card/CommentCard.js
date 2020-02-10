@@ -34,7 +34,7 @@ class CommentCard extends Component {
     endEditing = _ => {
         this.setState({
             editing: false,
-            postContent: this.props.content
+            commentContent: this.props.content
         })
     }
 
@@ -106,13 +106,13 @@ class CommentCard extends Component {
                 ? 
                 <div className="content edit">
                     <div className="utilButtons">
-                        <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} />
+                        {this.state.commentContent.length <= 250 ? <FontAwesomeIcon className="icon editIcons" icon={faCheck} onClick={this.editComment} /> : <FontAwesomeIcon className="icon editIcons disabled" icon={faCheck} />}
                         <CircularProgressbar className={this.state.commentContent.length > 250 ? 'svgerror' : null} value={this.state.commentContent.length} maxValue={250} minValue={0} strokeWidth={25} />
                         <FontAwesomeIcon className="icon editIcons" icon={faTimes} onClick={this.endEditing} />
                     </div>
                     <textarea name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                 </div> : this.state.deleting ?
-                    <div className="edit">
+                    <div className="content edit">
                         <p>Are you sure you want to delete this comment?</p>
                         <button className="danger" onClick={this.deleteComment}>Confirm</button>
                         <button onClick={this.toggleDeleting}>Cancel</button>
@@ -126,6 +126,9 @@ class CommentCard extends Component {
                             <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
+                        <div className="postInfo">
+                            {this.props.edited ? "Edited" : null}
+                        </div>
                     </div>
 
                     : this.state.username && this.props.user !== this.props.loggedInUser
@@ -137,12 +140,18 @@ class CommentCard extends Component {
                             <FontAwesomeIcon className="icon" onClick={this.unVote} icon={faChevronDown} />
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
+                        <div className="postInfo">
+                            {this.props.edited ? "Edited" : null}
+                        </div>
                     </div> 
                     : <div className="content">
                         <div className="utilButtons">
                             <span className="votes">{this.state.votes}</span>
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
+                        <div className="postInfo">
+                            {this.props.edited ? "Edited" : null}
+                        </div>
                     </div>
                 }
             </div>

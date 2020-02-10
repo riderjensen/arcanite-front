@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
 import './Card.css';
@@ -125,8 +125,10 @@ class PostCard extends Component {
                             <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                        <div className="postInfo">
+                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
+                        </div>
                     </div>
-
                     : this.state.username && this.props.user !== this.props.loggedInUser
                     ? 
                     <div className="content">
@@ -136,12 +138,18 @@ class PostCard extends Component {
                             <FontAwesomeIcon className="icon" icon={faChevronDown} onClick={this.unVotePost} />
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                        <div className="postInfo">
+                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
+                        </div>
                     </div> 
                     : <div className="content">
                         <div className="utilButtons">
                             <span className="votes">{this.state.votes}</span>
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                        <div className="postInfo">
+                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
+                        </div>
                     </div>
                 }
             </div>

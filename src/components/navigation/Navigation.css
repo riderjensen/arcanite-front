@@ -4,9 +4,10 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: 0;
-    height: 70px;
+    min-height: 70px;
     align-items: center;
 }
   
@@ -14,9 +15,9 @@
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
-    margin-right: 30px;
+    justify-content: center;
+    padding: 0;
 }
 
 .navbar span {
@@ -67,8 +68,16 @@
 .navbar button:focus, .navbar button:active {
     outline: 0;
 }
-  
-#chkToggle:checked + ul.main-nav {
-    display: block;
+
+@media screen and (max-width: 768px) {
+    .navbar .logo {
+        text-align: center;
+        margin-left: 10px;
+    }
+    .navbar .main-nav {
+        margin-right: 10px;
+    }
+    .navbar .main-nav li .profileNav {
+        margin-right: 10px;
+    }
 }
-    

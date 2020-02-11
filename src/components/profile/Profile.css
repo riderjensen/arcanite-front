@@ -8,6 +8,27 @@
     color: #282c34;
 }
 
+.profile .userInfo {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile .userInfo h1 {
+    text-align: center;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.profile .userInfo img {
+    border-radius: 50%;
+    max-height: 50px;
+}
+
 .profile .danger {
     color: #fff;
     background-color: #dc3545;

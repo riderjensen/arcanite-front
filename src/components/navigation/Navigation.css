@@ -3,11 +3,20 @@
     background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
 }
   
 .navbar .main-nav {
     list-style-type: none;
-    display: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
 }
 
 .navbar span {
@@ -20,12 +29,6 @@
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
 }
-  
-.navbar .main-nav li {
-    text-align: center;
-    margin: 15px auto;
-    padding: 0;
-}
 
 .navbar .main-nav li a {
     color: #fff;
@@ -33,25 +36,22 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.navbar .main-nav li .profileNav {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.navbar .main-nav li img {
+    margin-right: 5px;
+    border-radius: 50%;
+}
   
 .navbar .logo {
     display: inline-block;
     font-size: 22px;
-    margin-top: 10px;
     margin-left: 20px;
-}
-  
-.navbar .navbar-toggle {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 24px;
-}
-  
-.navbar #chkToggle {
-    display: none;
 }
 
 .navbar button.clear {
@@ -71,47 +71,4 @@
 #chkToggle:checked + ul.main-nav {
     display: block;
 }
-  
-@media screen and (min-width: 768px) {
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 0;
-        height: 70px;
-        align-items: center;
-    }
-  
-    .navbar #chkToggle:checked + ul.main-nav {
-        display: flex;
-    }
-  
-    .navbar .main-nav {
-        display: flex;
-        margin-right: 30px;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-    }
-  
-    .navbar .main-nav li {
-        margin: 0;
-    }
-  
-    .navbar .nav-links {
-        margin-left: 40px;
-    }
-  
-    .navbar .logo {
-        margin-top: 0;
-    }
-  
-    .navbar .navbar-toggle {
-        display: none;
-    }
-  
-    .navbar .logo:hover,
-    .navbar .nav-links:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-}
-  
+    

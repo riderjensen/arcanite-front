@@ -12,6 +12,7 @@ A posting platform
 6. ~~Add error reporting on application~~
 7. ~~Make a text counter for max post length~~
 8. Add a way for comments on the profile to go to their parent
+9. Homepage sorting potentially based on location/group
 
 ## Current Bugs
 

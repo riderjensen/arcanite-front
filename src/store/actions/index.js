@@ -451,3 +451,30 @@ const addErrorDispatching = payload => {
         payload: message
     }
 }
+
+export const submitChat = payload => {
+    return (dispatch, getState) => {
+        const token = localStorage.arcaniteToken;
+        if (token) {
+
+            const state = getState();
+            const copyArray = [...state.index.chat];
+
+            const date = new Date();
+            const testData = {
+                username: 'Test User',
+                message: payload,
+                timestamp: `${date.getHours()}:${date.getMinutes()}`
+            }
+
+            copyArray.push(testData);
+            
+            dispatch(submitChatDispatching(copyArray))
+        }
+    }
+}
+
+const submitChatDispatching = payload => ({
+    type: actionTypes.SUBMIT_CHAT,
+    payload: payload
+})

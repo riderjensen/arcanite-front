@@ -6,7 +6,8 @@ const initialState = {
 	posts: [],
 	userPosts: [],
 	selectedPost: {},
-	error: null
+	error: null,
+	chat: []
   }
   
 export default function reducer(state = initialState, action) {
@@ -41,6 +42,8 @@ export default function reducer(state = initialState, action) {
 			return {...state, selectedPost: action.payload}
 		case actionTypes.DELETE_USER_COMMENT:
 			return {...state, userPosts: action.payload}
+		case actionTypes.SUBMIT_CHAT:
+			return {...state, chat: action.payload}
 		default:
 			return state;
 	}

@@ -14,5 +14,7 @@ export const ADD_COMMENT = "ADD_COMMENT"
 export const DELETE_USER_COMMENT = "DELETE_USER_COMMENT"
 export const ADD_USER_COMMENT = "ADD_USER_COMMENT"
 
+export const SUBMIT_CHAT = "SUBMIT_CHAT"
+
 export const CLEAR_ERROR = "CLEAR_ERROR"
 export const ADD_ERROR = "ADD_ERROR"

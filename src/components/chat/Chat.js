@@ -38,8 +38,8 @@ class Modal extends Component {
             <div className="chat">
                 <div className="comments">
                     {this.props.chat.map(msg => (
-                        <div key={msg.timestamp}>
-                            <span className="comment-info">{msg.timestamp} {msg.username}</span>
+                        <div key={msg.key}>
+                            <span className="comment-info">{msg.timestamp} - {msg.username}</span>
                             <p className="comment">{msg.message}</p>
                         </div>
                     ))}

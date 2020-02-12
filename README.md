@@ -24,7 +24,7 @@ Add in a chat section that is site-wide. People can only post once a day and com
     * Allow the chat area to minimize
     * Create a page that is for chat
     * Fix the index.js action to not have dummy data
-
+    * Add the counter to the chat functionality
 
 ## Current Bugs
 

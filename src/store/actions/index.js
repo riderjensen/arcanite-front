@@ -461,10 +461,13 @@ export const submitChat = payload => {
             const copyArray = [...state.index.chat];
 
             const date = new Date();
+            let myDate = '';
+            date.getHours() - 1 > 12 ? myDate = `${date.getHours() -13}:${date.getMinutes()}pm` : myDate = `${date.getHours() -1}:${date.getMinutes()}am`
             const testData = {
                 username: 'Test User',
                 message: payload,
-                timestamp: `${date.getHours()}:${date.getMinutes()}`
+                timestamp: `${myDate}`,
+                key: date.getTime()
             }
 
             copyArray.push(testData);

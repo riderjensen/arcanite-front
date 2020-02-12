@@ -24,14 +24,9 @@ class Modal extends Component {
         this.setState(myStateObj)
     }
 
-    keyPressed(event) {
+    keyPressed = event => {
         if (event.key === "Enter") {
-            const date = new Date();
-            this.props.submitChat({
-                message: this.state.content,
-                username: this.props.username,
-                timestamp: date.now()
-            });
+            this.props.submitChat(this.state.content);
             this.setState({
                 content: ''
             })
@@ -49,7 +44,7 @@ class Modal extends Component {
                         </div>
                     ))}
                 </div>
-                {this.props.username ? <input type="text" name="content" onKeyPress={this.keyPressed} onChange={this.handleChange} /> : null}
+                {this.props.username ? <input type="text" name="content" value={this.state.content} onKeyPress={this.keyPressed} onChange={this.handleChange} /> : null}
             </div>
         )
     }
@@ -64,8 +59,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        submitPost: content => {
-            dispatch(actions.submitChat({content}))
+        submitChat: content => {
+            dispatch(actions.submitChat(content))
         }
     }
 }

@@ -8,15 +8,23 @@ Add in a chat section that is site-wide. People can only post once a day and com
 
 ## Todo
 
-1. ~~Add in spinner for async calls~~
-2. Let an account vote only once
-3. Add a sort function to profile to sort for comments or posts
-4. Create a frontpage algorithm to vote posts higher
-5. ~~Add delete functionality to posts and comments~~
-6. ~~Add error reporting on application~~
-7. ~~Make a text counter for max post length~~
-8. Add a way for comments on the profile to go to their parent
-9. Homepage sorting potentially based on location/group
+1. Main Application
+    * ~~Add in spinner for async calls~~    
+    * ~~Add delete functionality to posts and comments~~
+    * ~~Add error reporting on application~~
+    * ~~Make a text counter for max post length~~
+    * Let an account vote only once
+    * Add a sort function to profile to sort for comments or posts
+    * Create a frontpage algorithm to vote posts higher
+    * Add a way for comments on the profile to go to their parent
+    * Homepage sorting potentially based on location/group
+
+2. Chat Functionality
+    * Create socket connetions on the back
+    * Allow the chat area to minimize
+    * Create a page that is for chat
+    * Fix the index.js action to not have dummy data
+
 
 ## Current Bugs
 

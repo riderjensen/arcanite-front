@@ -1,11 +1,20 @@
 .main-header {
-    z-index: -1;
-    background-color: #fff;
     min-height: 90vh;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+}
+
+.post-area {
     color: #282c34;
+    width: 600px;
+    overflow: scroll;
+}
+
+.comment-area {
+    width: 600px;
+    overflow: scroll;
 }
 
 

@@ -47,7 +47,6 @@ class Modal extends Component {
             <div className={this.state.show ? 'chat' : 'chat down'}>
                 <div className="chatToggle" onClick={this.toggleChat}>Chat
                     <FontAwesomeIcon className="close"  icon={this.state.show ? faChevronDown : faChevronUp}></FontAwesomeIcon>
-                    
                 </div>
                 <div className="comments">
                     {this.props.chat.map(msg => (

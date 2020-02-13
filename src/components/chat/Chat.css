@@ -36,7 +36,7 @@
 
 .chat .comments::-webkit-scrollbar {
     display: none;
-  }
+}
   
 .chat .comments .comment-info {
     color: lightslategray;

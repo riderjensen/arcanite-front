@@ -103,7 +103,7 @@ class PostCard extends Component {
     render() {
 
         return (
-            <div onClick={() => this.selectPost(this.props._id)} className={`card ${this.props.edited ? "edited" : ""}`}>
+            <div className="card postCard">
                 {this.state.editing   
                 ? 
                 <div className="content edit">
@@ -127,7 +127,7 @@ class PostCard extends Component {
                             <span className="votes">{this.state.votes}</span>
                             <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>
-                        <h5 className="card-title">{this.state.postContent}</h5>
+                        <h5 onClick={() => this.selectPost(this.props._id)} className="card-title">{this.state.postContent}</h5>
                         <div className="postInfo">
                             {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
@@ -140,7 +140,7 @@ class PostCard extends Component {
                             <span className="votes">{this.state.votes}</span>
                             <FontAwesomeIcon className="icon" icon={faChevronDown} onClick={this.unVotePost} />
                         </div>
-                        <h5 className="card-title">{this.state.postContent}</h5>
+                        <h5 onClick={() => this.selectPost(this.props._id)} className="card-title">{this.state.postContent}</h5>
                         <div className="postInfo">
                             {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
@@ -149,7 +149,7 @@ class PostCard extends Component {
                         <div className="utilButtons">
                             <span className="votes">{this.state.votes}</span>
                         </div>
-                        <h5 className="card-title">{this.state.postContent}</h5>
+                        <h5 onClick={() => this.selectPost(this.props._id)} className="card-title">{this.state.postContent}</h5>
                         <div className="postInfo">
                             {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>

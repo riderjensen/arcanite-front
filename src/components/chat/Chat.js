@@ -45,8 +45,8 @@ class Modal extends Component {
     render() {
         return (
             <div className={this.state.show ? 'chat' : 'chat down'}>
-                <div className="chatToggle">Chat
-                    <FontAwesomeIcon className="close" onClick={this.toggleChat} icon={this.state.show ? faChevronDown : faChevronUp}></FontAwesomeIcon>
+                <div className="chatToggle" onClick={this.toggleChat}>Chat
+                    <FontAwesomeIcon className="close"  icon={this.state.show ? faChevronDown : faChevronUp}></FontAwesomeIcon>
                     
                 </div>
                 <div className="comments">

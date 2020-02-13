@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -97,10 +96,14 @@ class PostCard extends Component {
         });
     }
 
+    selectPost = id => {
+        this.props.selectPost(id)
+    }
+
     render() {
 
         return (
-            <div className={`card ${this.props.edited ? "edited" : ""}`}>
+            <div onClick={() => this.selectPost(this.props._id)} className={`card ${this.props.edited ? "edited" : ""}`}>
                 {this.state.editing   
                 ? 
                 <div className="content edit">
@@ -124,7 +127,7 @@ class PostCard extends Component {
                             <span className="votes">{this.state.votes}</span>
                             <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>
-                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                        <h5 className="card-title">{this.state.postContent}</h5>
                         <div className="postInfo">
                             {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
@@ -137,7 +140,7 @@ class PostCard extends Component {
                             <span className="votes">{this.state.votes}</span>
                             <FontAwesomeIcon className="icon" icon={faChevronDown} onClick={this.unVotePost} />
                         </div>
-                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                        <h5 className="card-title">{this.state.postContent}</h5>
                         <div className="postInfo">
                             {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
@@ -146,7 +149,7 @@ class PostCard extends Component {
                         <div className="utilButtons">
                             <span className="votes">{this.state.votes}</span>
                         </div>
-                        <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
+                        <h5 className="card-title">{this.state.postContent}</h5>
                         <div className="postInfo">
                             {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
@@ -167,7 +170,8 @@ const mapDispatchToProps = dispatch => ({
     editPost: editObj => dispatch(actions.editPost(editObj)),
     votePost: id => dispatch(actions.votePost(id)),
     deletePost: id => dispatch(actions.deletePost(id)),
-    unVotePost: id => dispatch(actions.unVotePost(id))
+    unVotePost: id => dispatch(actions.unVotePost(id)),
+    selectPost: (id) => dispatch(actions.getOnePost(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostCard);

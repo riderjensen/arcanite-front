@@ -7,14 +7,37 @@
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 
+.chat.down {
+    bottom: -355px
+}
+
+.chat .chatToggle {
+    width: 100%;
+    background-color: #85DCE6;
+    text-align: center;
+    position: relative;
+}
+
+.chat .chatToggle .close {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
 .chat .comments {
     max-height: 300px;
+    height: 300px;
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 10px;
+    -ms-overflow-style: none;
 }
 
+.chat .comments::-webkit-scrollbar {
+    display: none;
+  }
+  
 .chat .comments .comment-info {
     color: lightslategray;
     font-size: 12px;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import './Chat.css'
 
@@ -14,7 +16,8 @@ class Modal extends Component {
     }
 
     state = {
-        content: ''
+        content: '',
+        show: false
     }
 
     handleChange(event) {
@@ -31,11 +34,21 @@ class Modal extends Component {
                 content: ''
             })
         }
-      }
+    }
+
+    toggleChat = _ => {
+        this.setState({
+            show: !this.state.show
+        })
+    }
 
     render() {
         return (
-            <div className="chat">
+            <div className={this.state.show ? 'chat' : 'chat down'}>
+                <div className="chatToggle">Chat
+                    <FontAwesomeIcon className="close" onClick={this.toggleChat} icon={this.state.show ? faChevronDown : faChevronUp}></FontAwesomeIcon>
+                    
+                </div>
                 <div className="comments">
                     {this.props.chat.map(msg => (
                         <div key={msg.key}>

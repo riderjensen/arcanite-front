@@ -12,11 +12,38 @@ import './HomeContainer.css';
 
 class Home extends Component {
 
+    state = {
+        commentContent: ''
+    }
+
     componentDidMount() {
         if (this.props.posts.length < 1) {
             this.props.getPosts()
         }
     }
+
+    getOnePost = id => {
+        this.props.getOnePost(id);
+    }
+
+    handleChange = event => {
+        // change the inputs in the state
+        const myStateObj = {};
+        myStateObj[event.target.name] = event.target.value;
+        this.setState(myStateObj);
+    }
+
+    addComment = event => {
+        event.preventDefault();
+        this.setState({
+            commentContent: ''
+        });
+        this.props.addComment({
+            id: this.props.selectedPost._id,
+            content: this.state.commentContent
+        });
+    }
+
 
     render() {
         return (
@@ -30,6 +57,11 @@ class Home extends Component {
                         </div>}
                 </div>
                 <div className="comment-area">
+                    {this.props.username ? 
+                    <div className="commentInput">
+                        <textarea type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
+                        <button onClick={this.addComment}>Comment</button>
+                    </div> : null}
                     {this.props.selectedPost ? this.props.selectedPost.comments ? this.props.selectedPost.comments.length > 0 ? this.props.selectedPost.comments.map(comment => {
                         return <CommentCard {...comment} loggedInUser={this.props.username} key={comment._id} />
                     }) : null: null : null}
@@ -48,7 +80,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: () => dispatch(actions.getPosts())
+    getPosts: () => dispatch(actions.getPosts()),
+    addComment: id => dispatch(actions.addComment(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

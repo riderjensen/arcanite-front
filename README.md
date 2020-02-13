@@ -32,7 +32,7 @@ Add in a chat section that is site-wide. People can only post once a day and com
     * Add the counter to the chat functionality
 
 3. Site redesign
-    * Add one post to main page instead of a seperate page including text box
+    * ~~Add one post to main page instead of a seperate page including text box~~
     * ~~Scroll posts on the left but dont have the page scroll~~
     * ~~Post card clicking makes too many calls~~
     * Add an effect to show what post is selected like a light blue bg or something

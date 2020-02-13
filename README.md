@@ -34,4 +34,4 @@ Add in a chat section that is site-wide. People can only post once a day and com
 3. Site redesign
     * Add one post to main page instead of a seperate page
     * Scroll posts on the left but dont have the page scroll
-    * Post card clicking makes too many calls 
+    * ~~Post card clicking makes too many calls~~

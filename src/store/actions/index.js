@@ -322,15 +322,19 @@ export const voteComment = payload => {
 }
 
 export const getOnePost = payload => {
-    return dispatch => {
-        return axios.get(`https://project-arcanite.herokuapp.com/a/${payload}`).then(resp => {
-            dispatch(getOnePostDispatching(resp.data.post))
-        }).catch(error  => {
-            setTimeout(() => {
-                dispatch(clearErrorDispatching())
-            }, 10000)
-            dispatch(addErrorDispatching(error.response))
-        })
+    return (dispatch, getState) => {
+
+        const state = getState()
+        if (state.index.selectedPost._id !== payload) {
+            return axios.get(`https://project-arcanite.herokuapp.com/a/${payload}`).then(resp => {
+                dispatch(getOnePostDispatching(resp.data.post))
+            }).catch(error  => {
+                setTimeout(() => {
+                    dispatch(clearErrorDispatching())
+                }, 10000)
+                dispatch(addErrorDispatching(error.response))
+            })
+        }
     }
 }
 

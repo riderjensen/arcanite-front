@@ -1,22 +1,18 @@
 .main-header {
-    min-height: 90vh;
+    max-height: calc(100vh - 72px);
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
     display: flex;
 }
 
-.post-area {
+.post-area, .comment-area{
     color: #282c34;
     width: 600px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100%;
 }
-
-.comment-area {
-    width: 600px;
-    overflow: scroll;
-}
-
 
 .main-header p.load-warning {
     text-align: center;

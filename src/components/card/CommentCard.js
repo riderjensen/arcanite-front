@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
 import './Card.css';
@@ -121,13 +121,11 @@ class CommentCard extends Component {
                     ? 
                     <div className="content">
                         <div className="utilButtons">
-                            <FontAwesomeIcon className="icon editIcon" onClick={this.startEditing} icon={faPencilAlt} />
                             <span className="votes">{this.state.votes}</span>
-                            <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited" : null}
+                            {this.props.edited ? "Edited - " : null}<span onClick={this.startEditing}>Edit</span> <span onClick={this.toggleDeleting}>Delete</span>
                         </div>
                     </div>
 

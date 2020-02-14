@@ -9,6 +9,11 @@ Add in a chat section that is site-wide. People can only post once a day and com
 ## Todo
 
 1. Main Application
+    * ~~Deleting a comment seems to delete more than we want~~
+    * ~~Cards dont leave immedietly after you delete them~~
+    * ~~Multiple comments show up as the same content as the first one until you refresh the page~~
+    * ~~Modal stays open after async call completes~~
+    * ~~You cant delete the comment you just created~~
     * ~~Add in spinner for async calls~~    
     * ~~Add delete functionality to posts and comments~~
     * ~~Add error reporting on application~~
@@ -21,15 +26,7 @@ Add in a chat section that is site-wide. People can only post once a day and com
 
 2. Chat Functionality
     * Create socket connetions on the back
-    * Allow the chat area to minimize
+    * ~~Allow the chat area to minimize~~
     * Create a page that is for chat
     * Fix the index.js action to not have dummy data
     * Add the counter to the chat functionality
-
-## Current Bugs
-
-1. ~~Deleting a comment seems to delete more than we want~~
-2. ~~Cards dont leave immedietly after you delete them~~
-3. ~~Multiple comments show up as the same content as the first one until you refresh the page~~
-4. ~~Modal stays open after async call completes~~
-5. ~~You cant delete the comment you just created~~

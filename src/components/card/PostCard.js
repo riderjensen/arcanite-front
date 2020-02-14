@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTimes, faCheck, faChevronUp, faChevronDown, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faChevronUp, faChevronDown, faComment } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
 import './Card.css';
@@ -100,7 +100,7 @@ class PostCard extends Component {
     render() {
 
         return (
-            <div className={`card ${this.props.edited ? "edited" : ""}`}>
+            <div className="card">
                 {this.state.editing   
                 ? 
                 <div className="content edit">
@@ -120,13 +120,11 @@ class PostCard extends Component {
                     ? 
                     <div className="content">
                         <div className="utilButtons">
-                            <FontAwesomeIcon className="icon editIcon" onClick={this.startEditing} icon={faPencilAlt} />
                             <span className="votes">{this.state.votes}</span>
-                            <FontAwesomeIcon className="icon deleteIcon" icon={faTimes} onClick={this.toggleDeleting} />
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
+                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length} - <span onClick={this.startEditing}>Edit</span> <span onClick={this.toggleDeleting}>Delete</span>
                         </div>
                     </div>
                     : this.state.username && this.props.user !== this.props.loggedInUser

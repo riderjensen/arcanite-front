@@ -47,7 +47,7 @@ class Post extends Component {
         return (
             <div className="one-post">
                 <div className="post-header">
-                    <h1>{this.props.post.content}<span className="edited">{this.props.post.edited ? '*' : null}</span></h1>
+                    <p className="title">{this.props.post.content}<span className="edited">{this.props.post.edited ? '*' : null}</span></p>
                     <p className="author">Posted By: {this.props.post.user} on {date.toDateString()}</p>
                     {this.props.username ? 
                         <div className="commentInput">

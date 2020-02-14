@@ -10,7 +10,9 @@
     color: #282c34;
 }
 
-.one-post .post-header h1 {
+.one-post .post-header .title {
+    font-size: 22px;
+    font-weight: 600;
     max-width: 1000px;
     margin-bottom: 0;
 }
@@ -48,7 +50,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .one-post .post-header h1 {
-        font-size: 20px;
+    .one-post .post-header .title {
+        font-size: 18px;
     }
 }

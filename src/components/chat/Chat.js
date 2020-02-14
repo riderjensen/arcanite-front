@@ -42,6 +42,10 @@ class Modal extends Component {
         })
     }
 
+    componentWillUpdate() {
+        // scroll the comments section down lower
+    }
+
     render() {
         return (
             <div className={this.state.show ? 'chat' : 'chat down'}>

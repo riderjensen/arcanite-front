@@ -21,8 +21,8 @@
 
 .chat .chatToggle .close {
     position: absolute;
-    right: 3px;
-    top: 3px;
+    right: 6px;
+    top: 6px;
 }
 
 .chat .comments {
@@ -62,15 +62,22 @@
     .chat {
         position: fixed;
         bottom: 0;
-        right: 5%;
-        width: 90%;
+        right: unset;
+        width: 100%;
         background-color: #fff;
         box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     }
+
+    .chat .chatToggle {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
     .chat .comments {
         max-height: unset;
         height: 70vh;
     }
+
     .chat.down {
         bottom: -82vh
     }

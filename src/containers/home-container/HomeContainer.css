@@ -1,7 +1,6 @@
 .main-header {
     max-height: calc(100vh - 72px);
     max-width: 1200px;
-    overflow: hidden;
     display: flex;
     margin: auto;
 }
@@ -47,7 +46,7 @@
         width: 100%;
         flex-wrap: wrap;
     }
-    .post-area, .comment-area {
-        max-height: 50%;
+    .comment-area {
+        display: none;
     }
 }

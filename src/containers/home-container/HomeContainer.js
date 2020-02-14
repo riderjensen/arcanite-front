@@ -50,21 +50,25 @@ class Home extends Component {
             <div className="main-header">
                 <div className="post-area">
                     {this.props.posts.length > 0 ? this.props.posts.map(post => (
-                        <PostCard {...post} loggedInUser={this.props.username} key={post._id} />
+                        <details>
+                            <summary>
+                                <PostCard {...post} loggedInUser={this.props.username} key={post._id} />
+                            </summary>
+                            <div className="comment-area">
+                                {this.props.username && this.props.selectedPost.comments ? 
+                                <div className="commentInput">
+                                    <textarea type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
+                                    <button onClick={this.addComment}>Comment</button>
+                                </div> : null}
+                                {this.props.selectedPost ? this.props.selectedPost.comments ? this.props.selectedPost.comments.length > 0 ? this.props.selectedPost.comments.map(comment => {
+                                    return <CommentCard {...comment} loggedInUser={this.props.username} key={comment._id} />
+                                }) : null: null : null}
+                            </div>
+                        </details>
                     )) : <div>
                             <p className="load-warning">Please be patient while our backend wakes up.</p>
                             <Spinner />
                         </div>}
-                </div>
-                <div className="comment-area">
-                    {this.props.username && this.props.selectedPost.comments ? 
-                    <div className="commentInput">
-                        <textarea type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
-                        <button onClick={this.addComment}>Comment</button>
-                    </div> : null}
-                    {this.props.selectedPost ? this.props.selectedPost.comments ? this.props.selectedPost.comments.length > 0 ? this.props.selectedPost.comments.map(comment => {
-                        return <CommentCard {...comment} loggedInUser={this.props.username} key={comment._id} />
-                    }) : null: null : null}
                 </div>
             </div>
         )

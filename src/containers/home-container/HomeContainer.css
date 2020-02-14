@@ -5,6 +5,10 @@
     margin: auto;
 }
 
+.main-header details > summary::-webkit-details-marker {
+    display: none;
+}
+
 .post-area, .comment-area{
     color: #282c34;
     width: 600px;

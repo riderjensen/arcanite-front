@@ -88,3 +88,7 @@
 .postCard h5 {
     text-decoration: underline;
 }
+
+.postCard h5:hover {
+    cursor: pointer;
+}

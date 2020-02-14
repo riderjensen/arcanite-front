@@ -57,7 +57,7 @@ class Home extends Component {
                         </div>}
                 </div>
                 <div className="comment-area">
-                    {this.props.username ? 
+                    {this.props.username && this.props.selectedPost.comments ? 
                     <div className="commentInput">
                         <textarea type="text" name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                         <button onClick={this.addComment}>Comment</button>

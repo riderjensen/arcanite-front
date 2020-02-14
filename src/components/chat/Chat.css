@@ -16,6 +16,7 @@
     background-color: #85DCE6;
     text-align: center;
     position: relative;
+    border-radius: 0.25rem;
 }
 
 .chat .chatToggle .close {
@@ -55,4 +56,22 @@
     padding-right: 0;
     margin: auto;
     display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .chat {
+        position: fixed;
+        bottom: 0;
+        right: 5%;
+        width: 90%;
+        background-color: #fff;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    }
+    .chat .comments {
+        max-height: unset;
+        height: 70vh;
+    }
+    .chat.down {
+        bottom: -82vh
+    }
 }

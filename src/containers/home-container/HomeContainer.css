@@ -1,9 +1,9 @@
 .main-header {
     max-height: calc(100vh - 72px);
     max-width: 1200px;
-    margin: auto;
     overflow: hidden;
     display: flex;
+    margin: auto;
 }
 
 .post-area, .comment-area{
@@ -29,4 +29,25 @@
 
 .main-header p.load-warning {
     text-align: center;
+}
+
+@media screen and (max-width: 1199px) {
+    .main-header {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .post-area, .comment-area {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .main-header {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .post-area, .comment-area {
+        max-height: 50%;
+    }
 }

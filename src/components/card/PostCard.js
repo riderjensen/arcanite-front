@@ -103,7 +103,7 @@ class PostCard extends Component {
     render() {
 
         return (
-            <div className="card postCard">
+            <div className={this.props.selected ? 'card postCard selected' : 'card postCard'}>
                 {this.state.editing   
                 ? 
                 <div className="content edit">

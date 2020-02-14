@@ -13,6 +13,10 @@
     overflow-wrap: break-word;
 }
 
+.card.selected {
+    background-color: #ebfaff;
+}
+
 .card .utilButtons {
     position: absolute;
     right: 0;

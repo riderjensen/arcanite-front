@@ -27,6 +27,7 @@ Add in a chat section that is site-wide. People can only post once a day and com
 2. Chat Functionality
     * Create socket connetions on the back
     * ~~Allow the chat area to minimize~~
-    * Create a page that is for chat
+    * Scroll the div when we get a new comment
     * Fix the index.js action to not have dummy data
     * Add the counter to the chat functionality
+    * Fix chat positioning for when someone is logged out

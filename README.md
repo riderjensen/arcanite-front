@@ -1,7 +1,7 @@
 # Project Arcanite
 
 A posting platform
-
+[Related Backend](https://github.com/riderjensen/arcanite-back)
 ## Future Plans
 
 Add in a chat section that is site-wide. People can only post once a day and comment twice a day but they can chat all they want. Chat is created with web sockets with no DB so you only get the chat messages as long as you are on the page.

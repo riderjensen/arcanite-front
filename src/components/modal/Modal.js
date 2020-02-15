@@ -37,7 +37,7 @@ class Modal extends Component {
         return (
             <div className="overlay">
                 <div onClick={this.props.passFunction} className="overlay"></div>
-                <div onClick={this.preventIssue} className="modal">
+                <div className="modal">
                     <CircularProgressbar className={this.state.content.length > 250 ? 'svgerror' : null} value={this.state.content.length} maxValue={250} minValue={0} strokeWidth={25} />
                     <FontAwesomeIcon className="close" onClick={this.props.passFunction} icon={faTimes}></FontAwesomeIcon>
                     <h1>Create Post</h1>

@@ -56,6 +56,10 @@
     margin: 0 30px;
 }
 
+.card span {
+    cursor: pointer;
+}
+
 .card .edit textarea {
     width: 100%;
 }

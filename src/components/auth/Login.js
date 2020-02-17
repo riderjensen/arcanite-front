@@ -14,8 +14,8 @@ class Login extends Component {
     }
 
     state = {
-        username: '',
-        password: ''
+        username: 'testuser',
+        password: 'qwe123QWE'
     }
 
 
@@ -38,8 +38,8 @@ class Login extends Component {
                 <div className="form-center">
                     <form onSubmit={this.login}>
                         <h1>Login</h1>
-                        <input placeholder="Username" type="text" name="username" onChange={this.handleChange} />
-                        <input placeholder="Password" type="password" name="password" onChange={this.handleChange} />
+                        <input placeholder="Username" value={this.state.username} type="text" name="username" onChange={this.handleChange} />
+                        <input placeholder="Password" value={this.state.password} type="password" name="password" onChange={this.handleChange} />
                         <input value="Submit" type="submit" />
                         <p>
                             Don't have an account? <NavLink to="/signup">Sign Up</NavLink>

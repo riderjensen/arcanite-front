@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import UnAuthRoutes from './routes/UnAuthRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 
-import Chat from './components/chat/Chat';
 import Navigation from './components/navigation/Navigation';
 import Error from './components/error/Error';
 
@@ -42,7 +41,6 @@ class App extends Component {
         <div className="App">
           {routes}
           {this.props.error ? <Error msg={this.props.error} clearError={this.props.clearError} /> : null}
-          <Chat />
         </div>
       </div>
     )

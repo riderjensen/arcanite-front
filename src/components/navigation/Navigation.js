@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-import Modal from '../modal/Modal';
 
 import './Navigation.css';
 
@@ -48,9 +45,6 @@ class NoAuthNavigation extends Component {
                         {this.props.username.toUpperCase()}
                     </NavLink>
                 </li>
-                <li className="right-align">
-                    <button onClick={this.showModal}><FontAwesomeIcon  icon={faEdit}></FontAwesomeIcon></button>
-                </li>
             </ul>
         )
     }
@@ -60,7 +54,6 @@ class NoAuthNavigation extends Component {
             <nav className="navbar">
                 <NavLink className="logo" to="/">Project <strong>Arcanite</strong></NavLink>
                 {this.props.username ? this.UnAuthRoutes() : this.AuthRoutes()}
-                {this.state.modal ? <Modal passFunction={this.hideModal} /> : null}
             </nav>
         )
     }

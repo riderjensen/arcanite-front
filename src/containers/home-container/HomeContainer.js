@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import PostCard from '../../components/card/PostCard';
 import Spinner from '../../components/spinner/Spinner';
+import CreatePostButton from '../../components/createPostButton/CreatePostButton';
 
 import * as actions from '../../store/actions/index';
 
@@ -27,6 +28,7 @@ class Home extends Component {
                             <p className="load-warning">Please be patient while our backend wakes up.</p>
                             <Spinner />
                         </div>}
+                    {this.props.username ? <CreatePostButton /> : null}
                 </div>
             </div>
         )

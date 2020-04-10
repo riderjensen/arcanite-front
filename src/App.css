@@ -68,3 +68,7 @@ button:disabled {
 .CircularProgressbar.svgerror .CircularProgressbar-path {
   stroke: red;
 }
+
+.clickable {
+  cursor: pointer;
+}

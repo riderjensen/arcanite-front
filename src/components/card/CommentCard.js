@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCheck, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
 import './Card.css';
@@ -22,7 +22,9 @@ class CommentCard extends Component {
         deleting: false,
         commentContent: this.props.content,
         votes: this.props.votes,
-        username: this.props.username
+        username: this.props.username,
+        edited: this.props.edited,
+        votedUp: this.props.votedUp || false
     }
 
     startEditing = _ => {
@@ -54,7 +56,8 @@ class CommentCard extends Component {
     editComment = event => {
         event.preventDefault();
         this.setState({
-            editing: false
+            editing: false,
+            edited: true
         });
         this.props.editComment({
             content: this.state.commentContent,
@@ -67,7 +70,8 @@ class CommentCard extends Component {
         let newVotes = this.state.votes;
         newVotes++;
         this.setState({
-            votes: newVotes
+            votes: newVotes,
+            votedUp: true
         })
         this.props.voteComment({
             id: this.props._id
@@ -79,7 +83,8 @@ class CommentCard extends Component {
         let newVotes = this.state.votes;
         newVotes--;
         this.setState({
-            votes: newVotes
+            votes: newVotes,
+            votedUp: false
         })
         this.props.voteComment({
             id: this.props._id
@@ -100,7 +105,7 @@ class CommentCard extends Component {
         let cardContent;
 
         return (
-            <div className={`card comment ${this.props.edited ? "edited" : ""}`}>
+            <div className={`card comment ${this.state.edited ? "edited" : ""}`}>
                 {cardContent}
                 {this.state.editing   
                 ? 
@@ -112,7 +117,7 @@ class CommentCard extends Component {
                     </div>
                     <textarea name="commentContent" value={this.state.commentContent} onChange={this.handleChange} />
                 </div> : this.state.deleting ?
-                    <div className="content edit">
+                    <div className="content edit delete">
                         <p>Are you sure you want to delete this comment?</p>
                         <button className="danger" onClick={this.deleteComment}>Confirm</button>
                         <button onClick={this.toggleDeleting}>Cancel</button>
@@ -125,7 +130,7 @@ class CommentCard extends Component {
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited - " : null}<span onClick={this.startEditing}>Edit</span> <span onClick={this.toggleDeleting}>Delete</span>
+                            {this.state.edited ? "Edited - " : null}<span className="clickable" onClick={this.startEditing}>Edit</span> <span className="clickable" onClick={this.toggleDeleting}>Delete</span>
                         </div>
                     </div>
 
@@ -133,13 +138,12 @@ class CommentCard extends Component {
                     ? 
                     <div className="content">
                         <div className="utilButtons">
-                            <FontAwesomeIcon className="icon voteIcon" onClick={this.voteComment} icon={faChevronUp} />
+                            <FontAwesomeIcon className={this.state.votedUp ? 'icon votedUp' : 'icon'} onClick={this.state.votedUp ? this.unVoteComment : this.voteComment} icon={faChevronUp} />
                             <span className="votes">{this.state.votes}</span>
-                            <FontAwesomeIcon className="icon" onClick={this.unVote} icon={faChevronDown} />
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited" : null}
+                            {this.state.edited ? "Edited" : null}
                         </div>
                     </div> 
                     : <div className="content">
@@ -148,7 +152,7 @@ class CommentCard extends Component {
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited" : null}
+                            {this.state.edited ? "Edited" : null}
                         </div>
                     </div>
                 }

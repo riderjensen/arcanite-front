@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCheck, faChevronUp, faChevronDown, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faChevronUp, faComment } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
 import './Card.css';
@@ -23,7 +23,9 @@ class PostCard extends Component {
         deleting: false,
         postContent: this.props.content,
         votes: this.props.votes,
-        username: this.props.username
+        username: this.props.username,
+        edited: this.props.edited,
+        votedUp: this.props.votedUp || false,
     }
 
     startEditing = _ => {
@@ -68,7 +70,8 @@ class PostCard extends Component {
         let newVotes = this.state.votes;
         newVotes++;
         this.setState({
-            votes: newVotes
+            votes: newVotes,
+            votedUp: true,
         })
         this.props.votePost({
             id: this.props._id
@@ -80,7 +83,8 @@ class PostCard extends Component {
         let newVotes = this.state.votes;
         newVotes--;
         this.setState({
-            votes: newVotes
+            votes: newVotes,
+            votedUp: false,
         })
         this.props.unVotePost({
             id: this.props._id
@@ -111,7 +115,7 @@ class PostCard extends Component {
                     </div>
                     <textarea name="postContent" value={this.state.postContent} onChange={this.handleChange} />
                 </div> : this.state.deleting ?
-                    <div className="content edit">
+                    <div className="content edit delete">
                         <p>Are you sure you want to delete this post?</p>
                         <button className="danger" onClick={this.deletePost}>Confirm</button>
                         <button onClick={this.toggleDeleting}>Cancel</button>
@@ -124,20 +128,19 @@ class PostCard extends Component {
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length} - <span onClick={this.startEditing}>Edit</span> <span onClick={this.toggleDeleting}>Delete</span>
+                            {this.state.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length} - <span class="clickable" onClick={this.startEditing}>Edit</span> <span class="clickable" onClick={this.toggleDeleting}>Delete</span>
                         </div>
                     </div>
                     : this.state.username && this.props.user !== this.props.loggedInUser
                     ? 
                     <div className="content">
                         <div className="utilButtons">
-                            <FontAwesomeIcon className="icon voteIcon" onClick={this.votePost} icon={faChevronUp} />
+                            <FontAwesomeIcon className={this.state.votedUp ? 'icon votedUp' : 'icon'} onClick={this.state.votedUp ? this.unVotePost : this.votePost} icon={faChevronUp} />
                             <span className="votes">{this.state.votes}</span>
-                            <FontAwesomeIcon className="icon" icon={faChevronDown} onClick={this.unVotePost} />
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
+                            {this.state.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
                     </div> 
                     : <div className="content">
@@ -146,7 +149,7 @@ class PostCard extends Component {
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                         <div className="postInfo">
-                            {this.props.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
+                            {this.state.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length}
                         </div>
                     </div>
                 }

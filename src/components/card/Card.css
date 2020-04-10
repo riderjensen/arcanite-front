@@ -35,9 +35,17 @@
 }
 
 .card .utilButtons .icon {
-    color: #c16ecf;
+    color: lightgray;
     height: 20px;
     width: 100%;
+}
+
+.card .utilButtons .icon.votedUp {
+    color: #2376ae;
+}
+
+.card .utilButtons .icon.votedDown {
+    color: #c16ecf;
 }
 
 .card .utilButtons .deleteIcon {
@@ -56,8 +64,18 @@
     margin: 0 30px;
 }
 
-.card span {
-    cursor: pointer;
+.card .content.delete {
+    flex-wrap: wrap;
+}
+
+.card .content.delete p{
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.card .content.delete button {
+    margin: 5px;
 }
 
 .card .edit textarea {

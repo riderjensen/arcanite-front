@@ -128,7 +128,7 @@ class PostCard extends Component {
                         </div>
                         <h5 className="card-title"><NavLink  to={'/post/'+this.props._id}>{this.state.postContent}</NavLink></h5>
                         <div className="postInfo">
-                            {this.state.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length} - <span class="clickable" onClick={this.startEditing}>Edit</span> <span class="clickable" onClick={this.toggleDeleting}>Delete</span>
+                            {this.state.edited ? "Edited  -  " : null}<FontAwesomeIcon className="icon" icon={faComment} /> {this.props.comments.length} - <span className="clickable" onClick={this.startEditing}>Edit</span> <span className="clickable" onClick={this.toggleDeleting}>Delete</span>
                         </div>
                     </div>
                     : this.state.username && this.props.user !== this.props.loggedInUser

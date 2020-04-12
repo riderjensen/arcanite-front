@@ -38,6 +38,7 @@
     color: lightgray;
     height: 20px;
     width: 100%;
+    cursor: pointer;
 }
 
 .card .utilButtons .icon.votedUp {

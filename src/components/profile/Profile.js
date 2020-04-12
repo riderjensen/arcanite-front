@@ -12,6 +12,19 @@ import './Profile.css';
 
 class Profile extends Component {
 
+    constructor(props) {
+        super(props)
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    state = {
+        filter: ''
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
     logOutFunction = event => {
         event.preventDefault();
         this.props.userLogout();
@@ -28,12 +41,39 @@ class Profile extends Component {
                     <h1>{this.props.username.toUpperCase()}</h1>
                     <button className="danger" onClick={this.logOutFunction}>Logout</button>
                 </div>
+                <div className="filter">
+                    <select value={this.state.value} onChange={this.handleChange}>
+                        <option value="">All</option>
+                        <option value="Posts">Posts</option>
+                        <option value="Comments">Comments</option>
+                    </select>
+                </div>
                 {this.props.userPosts.length > 0 ? this.props.userPosts.map(card => {
-                    if (card.type === "post") {
-                        return <PostCard {...card} loggedInUser={this.props.username} key={card._id} />
+                    if (this.state.value) {
+                        // use the filters
+                        if (this.state.value === "Comments") {
+                            if (card.type === "comment") {
+                                return <CommentCard {...card} loggedInUser={this.props.username} key={card._id} />
+
+                            } else {
+                                return null;
+                            }  
+                        } else if(this.state.value === "Posts") {
+                            if (card.type === "post") {
+                                return <PostCard {...card} loggedInUser={this.props.username} key={card._id} />
+                            } else {
+                                return null;
+                            } 
+                        } else {
+                            return null;
+                        }
                     } else {
-                        return <CommentCard {...card} loggedInUser={this.props.username} key={card._id} />
-                    }                       
+                        if (card.type === "post") {
+                            return <PostCard {...card} loggedInUser={this.props.username} key={card._id} />
+                        } else {
+                            return <CommentCard {...card} loggedInUser={this.props.username} key={card._id} />
+                        }  
+                    }
                 }) : <Spinner />}
             </div>
         )

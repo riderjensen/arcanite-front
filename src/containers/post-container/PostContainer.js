@@ -43,7 +43,6 @@ class Post extends Component {
 
     render () {
         const date = new Date(this.props.post.createdAt)
-
         return (
             <div className="one-post">
                 <div className="post-header">

@@ -130,7 +130,7 @@ class CommentCard extends Component {
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.state.edited ? "Edited - " : null}<span className="clickable" onClick={this.startEditing}>Edit</span> <span className="clickable" onClick={this.toggleDeleting}>Delete</span>
+                            {this.state.edited ? "Edited - " : null}<span className="clickable" onClick={this.startEditing}>Edit</span> <span className="clickable" onClick={this.toggleDeleting}>Delete</span> {this.props.parent ? <a href={`/post/${this.props.parent}`}>Parent</a>: null}
                         </div>
                     </div>
 
@@ -143,7 +143,7 @@ class CommentCard extends Component {
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.state.edited ? "Edited" : null}
+                            {this.state.edited ? "Edited" : null} {this.props.parent ? <a href={`/post/${this.props.parent}`}>Parent</a>: null}
                         </div>
                     </div> 
                     : <div className="content">
@@ -152,7 +152,7 @@ class CommentCard extends Component {
                         </div>
                         <h5 className="card-title">{this.state.commentContent}</h5>
                         <div className="postInfo">
-                            {this.state.edited ? "Edited" : null}
+                            {this.state.edited ? "Edited" : null} {this.props.parent ? <a href={`/post/${this.props.parent}`}>Parent</a>: null}
                         </div>
                     </div>
                 }

@@ -23,6 +23,7 @@ Add in a chat section that is site-wide. People can only post once a day and com
     * Create a frontpage algorithm to vote posts higher
     * Add a way for comments on the profile to go to their parent
     * Homepage sorting potentially based on location/group
+    * Return to the previous page after login
 
 2. Chat Functionality
     * Create socket connetions on the back
